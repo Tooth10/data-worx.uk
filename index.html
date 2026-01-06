@@ -47,15 +47,59 @@
       background: #050706;
       font-size: 14px;
     }
+    .logo{
+  width: 220px;
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px auto;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
+}
+
+#contact{
+  padding-top: 10px;
+}
+
+.contact-form{
+  margin-top: 20px;
+  display: grid;
+  gap: 14px;
+  max-width: 520px;
+}
+
+.contact-form label{
+  display: grid;
+  gap: 8px;
+  font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea{
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  font-size: 16px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+  border-color: #00ff66;
+  box-shadow: 0 0 0 3px rgba(0,255,102,.15);
+}
+
   </style>
 </head>
 <body>
 
 <header>
+  <img src="dataworx.png" alt="DataWorx logo" class="logo">
   <h1>Turning Data into Clear, Actionable Insight</h1>
   <p>DataWorx helps organisations make better decisions through practical data analysis, reporting, and automation.</p>
-  <a class="cta" href="mailto:hello@data-worx.uk">Get in touch</a>
+  <a class="cta" href="#contact">Get in touch</a>
 </header>
+
 
 <section>
   <h2>Our Services</h2>
