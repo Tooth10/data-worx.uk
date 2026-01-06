@@ -1,127 +1,512 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DataWorx | Crafting Insights That Work</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DataWorx helps organisations turn data into clear, actionable insight through analytics, dashboards, reporting, and automation." />
+
   <style>
-    body {
+    :root{
+      --bg: #070a08;
+      --panel: rgba(255,255,255,.06);
+      --panel-2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.12);
+      --green: #00ff66; /* Matrix green */
+      --green-2: #00cc55;
+    }
+
+    *{ box-sizing: border-box; }
+
+    body{
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #0b0f0c;
-      color: #ffffff;
+      background: radial-gradient(1200px 600px at 50% 0%, rgba(0,255,102,.22), rgba(7,10,8,1) 60%), var(--bg);
+      color: var(--text);
+      line-height: 1.5;
     }
-    header {
-      padding: 80px 20px;
-      text-align: center;
-      background: radial-gradient(circle at top, #00ff66, #0b0f0c);
+
+    a{ color: inherit; }
+
+    .container{
+      width: 100%;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
+
+    /* Top bar */
+    .topbar{
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      background: rgba(0,0,0,.25);
+      backdrop-filter: blur(6px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
-    h2 {
-      color: #00ff66;
-      margin-top: 60px;
+
+    .topbar-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
     }
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
+
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
     }
-    .cta {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 14px 26px;
-      background: #00ff66;
-      color: #000;
+
+    .brand img{
+      height: 38px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 10px 22px rgba(0,0,0,.45));
+    }
+
+    .brand-name{
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-name strong{
+      font-size: 14px;
+      letter-spacing: .4px;
+    }
+
+    .brand-name span{
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .nav{
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a{
       text-decoration: none;
-      font-weight: bold;
+      font-size: 13px;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
     }
-    ul {
-      padding-left: 20px;
+
+    .nav a:hover{
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.04);
     }
-    footer {
-      padding: 40px 20px;
-      text-align: center;
-      background: #050706;
+
+    /* Buttons */
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      user-select: none;
+    }
+
+    .btn:active{ transform: translateY(1px); }
+
+    .btn-primary{
+      background: var(--green);
+      color: #001a0a;
+      border-color: rgba(0,0,0,.25);
+    }
+
+    .btn-primary:hover{
+      background: #27ff7e;
+    }
+
+    .btn-ghost{
+      background: rgba(255,255,255,.04);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover{
+      background: rgba(255,255,255,.07);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 54px 0 36px 0;
+    }
+
+    .hero-grid{
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .kicker{
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 13px;
+      width: fit-content;
+    }
+
+    .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 6px rgba(0,255,102,.12);
+    }
+
+    h1{
+      font-size: 44px;
+      line-height: 1.08;
+      margin: 16px 0 14px 0;
+      letter-spacing: -0.6px;
+    }
+
+    .lead{
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 56ch;
+      margin: 0 0 18px 0;
+    }
+
+    .hero-actions{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .proof{
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    }
+
+    .proof h3{
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: .2px;
+    }
+
+    .proof ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
       font-size: 14px;
     }
-    .logo{
-  width: 220px;
-  max-width: 80%;
-  height: auto;
-  display: block;
-  margin: 0 auto 20px auto;
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
-}
 
-#contact{
-  padding-top: 10px;
-}
+    .section{
+      padding: 44px 0;
+      border-top: 1px solid var(--line);
+    }
 
-.contact-form{
-  margin-top: 20px;
-  display: grid;
-  gap: 14px;
-  max-width: 520px;
-}
+    .section h2{
+      margin: 0 0 14px 0;
+      font-size: 26px;
+      color: var(--green);
+      letter-spacing: -0.2px;
+    }
 
-.contact-form label{
-  display: grid;
-  gap: 8px;
-  font-weight: bold;
-}
+    .section p{
+      margin: 0 0 18px 0;
+      color: var(--muted);
+      max-width: 70ch;
+    }
 
-.contact-form input,
-.contact-form textarea{
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,.2);
-  background: rgba(255,255,255,.06);
-  color: #fff;
-  font-size: 16px;
-}
+    /* Cards */
+    .cards{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
 
-.contact-form input:focus,
-.contact-form textarea:focus{
-  border-color: #00ff66;
-  box-shadow: 0 0 0 3px rgba(0,255,102,.15);
-}
+    .card{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding: 18px;
+    }
 
+    .card strong{
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .card span{
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Why */
+    .why-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .list{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    /* Contact */
+    .contact-wrap{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    form{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    label{
+      display: grid;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    input, textarea{
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.25);
+      color: var(--text);
+      font-size: 15px;
+      outline: none;
+    }
+
+    input:focus, textarea:focus{
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(0,255,102,.16);
+    }
+
+    .small{
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    footer{
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .cards{ grid-template-columns: 1fr; }
+      .why-grid{ grid-template-columns: 1fr; }
+      .contact-wrap{ grid-template-columns: 1fr; }
+      h1{ font-size: 36px; }
+      .topbar-inner{ flex-direction: column; align-items: flex-start; }
+      .nav{ justify-content: flex-start; }
+    }
   </style>
 </head>
+
 <body>
+  <!-- Top navigation -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <img src="dataworx.png" alt="DataWorx logo">
+        <div class="brand-name">
+          <strong>DataWorx</strong>
+          <span>Crafting Insights That Work</span>
+        </div>
+      </div>
 
-<header>
-  <img src="dataworx.png" alt="DataWorx logo" class="logo">
-  <h1>Turning Data into Clear, Actionable Insight</h1>
-  <p>DataWorx helps organisations make better decisions through practical data analysis, reporting, and automation.</p>
-  <a class="cta" href="#contact">Get in touch</a>
-</header>
+      <div class="nav">
+        <a href="#services">Services</a>
+        <a href="#why">Why DataWorx</a>
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
+      </div>
+    </div>
+  </div>
 
+  <!-- Hero -->
+  <div class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="kicker"><span class="dot"></span> Practical analytics, reporting & automation</div>
+        <h1>Turning Data into Clear, Actionable Insight</h1>
+        <p class="lead">
+          DataWorx helps organisations make better decisions through practical data analysis, reporting, and automation —
+          so you spend less time chasing numbers and more time acting on them.
+        </p>
 
-<section>
-  <h2>Our Services</h2>
-  <ul>
-    <li><strong>Data Analysis & Insight</strong> – Clear findings from complex data</li>
-    <li><strong>Dashboards & Reporting</strong> – Power BI, Excel, SQL and cloud platforms</li>
-    <li><strong>Process Automation</strong> – Smarter workflows, less manual effort</li>
-    <li><strong>Data Strategy & Support</strong> – Helping you use data properly</li>
-  </ul>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn btn-ghost" href="#services">See services</a>
+        </div>
+      </div>
 
-  <h2>Why DataWorx</h2>
-  <ul>
-    <li>Clear, jargon-free insight</li>
-    <li>Tailored solutions</li>
-    <li>Outcome-focused approach</li>
-  </ul>
-</section>
+      <div class="proof">
+        <h3>What you can expect</h3>
+        <ul>
+          <li>Clear, jargon-free insight that stakeholders understand</li>
+          <li>Dashboards and reporting that actually get used</li>
+          <li>Automation to reduce manual reporting and repetition</li>
+          <li>Flexible support: one-off projects or ongoing help</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-<footer>
-  <p>© DataWorx · Crafting Insights That Work</p>
-  <p>Email: hello@data-worx.uk</p>
-</footer>
+  <!-- Services -->
+  <div id="services" class="section">
+    <div class="container">
+      <h2>Services</h2>
+      <p>Focused support that helps you move from messy data to confident decisions — fast.</p>
 
+      <div class="cards">
+        <div class="card">
+          <strong>Data Analysis & Insight</strong>
+          <span>Clear findings from complex data, with practical recommendations.</span>
+        </div>
+
+        <div class="card">
+          <strong>Dashboards & Reporting</strong>
+          <span>Power BI, Excel, SQL and cloud platforms (including Azure and BigQuery).</span>
+        </div>
+
+        <div class="card">
+          <strong>Process Automation</strong>
+          <span>Smarter workflows that reduce manual effort and improve consistency.</span>
+        </div>
+
+        <div class="card">
+          <strong>Data Strategy & Support</strong>
+          <span>Pragmatic advice on what to measure, how to report, and how to scale.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why -->
+  <div id="why" class="section">
+    <div class="container">
+      <h2>Why DataWorx</h2>
+      <p>Professional delivery, clear communication, and solutions that fit the real world.</p>
+
+      <div class="why-grid">
+        <div class="card">
+          <strong>Designed for decision-makers</strong>
+          <span>Insight that’s clear, credible, and easy to act on — without the waffle.</span>
+        </div>
+
+        <div class="card">
+          <strong>Built around your tools</strong>
+          <span>Work with what you already use (Power BI, Excel, SQL, cloud data platforms).</span>
+        </div>
+
+        <ul class="list">
+          <li>Clear, jargon-free insight</li>
+          <li>Tailored solutions</li>
+          <li>Outcome-focused approach</li>
+          <li>Fast turnaround and responsive communication</li>
+        </ul>
+
+        <div class="card">
+          <strong>Results you can measure</strong>
+          <span>Reduce reporting time, improve accuracy, and track the KPIs that matter.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div id="contact" class="section">
+    <div class="container">
+      <h2>Get in touch</h2>
+      <p>Tell me what you need — I’ll reply with a clear next step.</p>
+
+      <div class="contact-wrap">
+        <div class="card">
+          <strong>Email</strong>
+          <span><a href="mailto:hello@data-worx.uk">hello@data-worx.uk</a></span>
+
+          <div style="height:14px"></div>
+
+          <strong>Typical enquiries</strong>
+          <ul class="list">
+            <li>Reporting packs and dashboards</li>
+            <li>Recruitment & workforce analytics</li>
+            <li>Data clean-up and quality fixes</li>
+            <li>Automated reporting workflows</li>
+          </ul>
+
+          <p class="small">Prefer a quick chat? Send a message and I’ll suggest times.</p>
+        </div>
+
+        <form action="https://formspree.io/f/mykzrgzj" method="POST">
+          <label>
+            Name
+            <input type="text" name="name" required>
+          </label>
+
+          <label>
+            Email
+            <input type="email" name="email" required>
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+
+          <input type="hidden" name="_subject" value="New enquiry from data-worx.uk">
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
+          <p class="small">By submitting, you agree to be contacted about your enquiry.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      © DataWorx · Crafting Insights That Work · <a href="mailto:hello@data-worx.uk">hello@data-worx.uk</a>
+    </div>
+  </footer>
 </body>
 </html>
