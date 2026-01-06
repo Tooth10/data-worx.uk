@@ -452,36 +452,6 @@
   }
 </style>
 </head>
-  
-<script>
-  (function () {
-    const root = document.documentElement;
-    const btn = document.getElementById("themeToggle");
-
-    // Load saved preference
-    const saved = localStorage.getItem("theme");
-    if (saved === "dark") root.setAttribute("data-theme", "dark");
-
-    // Set icon based on current theme
-    function setIcon(){
-      const isDark = root.getAttribute("data-theme") === "dark";
-      btn.textContent = isDark ? "☀️" : "🌙";
-    }
-    setIcon();
-
-    btn.addEventListener("click", function(){
-      const isDark = root.getAttribute("data-theme") === "dark";
-      if (isDark) {
-        root.removeAttribute("data-theme");
-        localStorage.setItem("theme", "light");
-      } else {
-        root.setAttribute("data-theme", "dark");
-        localStorage.setItem("theme", "dark");
-      }
-      setIcon();
-    });
-  })();
-</script>
 
 <body>
   <!-- Top navigation -->
@@ -674,5 +644,36 @@
       © Data Worx · <a href="mailto:hello@data-worx.uk">hello@data-worx.uk</a> · www.data-worx.uk
     </div>
   </footer>
+
+  <script>
+  (function () {
+    const root = document.documentElement;
+    const btn = document.getElementById("themeToggle");
+
+    // Load saved preference
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark") root.setAttribute("data-theme", "dark");
+
+    // Set icon based on current theme
+    function setIcon(){
+      const isDark = root.getAttribute("data-theme") === "dark";
+      btn.textContent = isDark ? "☀️" : "🌙";
+    }
+    setIcon();
+
+    btn.addEventListener("click", function(){
+      const isDark = root.getAttribute("data-theme") === "dark";
+      if (isDark) {
+        root.removeAttribute("data-theme");
+        localStorage.setItem("theme", "light");
+      } else {
+        root.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+      }
+      setIcon();
+    });
+  })();
+</script>
+  
 </body>
 </html>
