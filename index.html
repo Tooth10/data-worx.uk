@@ -21,7 +21,29 @@
 
   gtag('config', 'G-RDXC7MGJZY');
 </script>
-  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+
+<script>
+window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+    palette: {
+      popup: { background: "#0f1f16" },
+      button: { background: "#00b85c", text: "#001a0a" }
+    },
+    theme: "classic",
+    position: "bottom",
+    content: {
+      message: "This site uses cookies for analytics to improve performance.",
+      dismiss: "Got it",
+      link: "Learn more",
+      href: "#"
+    }
+  });
+});
+</script>
+
   <style>
   :root{
     --radius: 18px;
@@ -743,5 +765,22 @@
     });
   })();
   </script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form[action*='formspree']");
+  if (!form) return;
+
+  form.addEventListener("submit", function () {
+    if (window.gtag) {
+      gtag('event', 'generate_lead', {
+        event_category: 'contact',
+        event_label: 'contact_form'
+      });
+    }
+  });
+});
+</script>
+
 </body>
 </html>
