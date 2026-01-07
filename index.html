@@ -294,7 +294,7 @@
   }
 
   .section{
-    padding: 44px 0;
+    padding: 56px 0;
     border-top: 1px solid var(--line);
   }
 
@@ -402,6 +402,22 @@
     font-weight: 800;
     font-size: 13px;
   }
+
+  .trust-box{
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.cta-bar{
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 
   input, textarea, select{
     padding: 12px;
@@ -621,7 +637,7 @@
               <option>Process automation</option>
               <option>Data clean-up / quality fixes</option>
               <option>Training / coaching</option>
-              <option>Not sure yet</option>
+              <option>Other</option>
             </select>
           </label>
 
@@ -631,6 +647,8 @@
           </label>
 
           <input type="hidden" name="_subject" value="New enquiry from data-worx.uk">
+          <input type="hidden" name="_next" value="https://www.data-worx.uk/#contact">
+          <input type="text" name="_gotcha" style="display:none">
 
           <button type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
           <p class="small">By submitting, you agree to be contacted about your enquiry.</p>
@@ -656,9 +674,11 @@
 
     // Set icon based on current theme
     function setIcon(){
-      const isDark = root.getAttribute("data-theme") === "dark";
-      btn.textContent = isDark ? "☀️" : "🌙";
-    }
+    const isDark = root.getAttribute("data-theme") === "dark";
+    btn.textContent = isDark ? "☀️" : "🌙";
+    btn.setAttribute("aria-pressed", String(isDark));
+      }
+
     setIcon();
 
     btn.addEventListener("click", function(){
