@@ -18,8 +18,8 @@
     --radiusSm: 14px;
 
     /* Brand */
-    --green: #00b85c;      /* mature Matrix green */
-    --greenBright: #00ff66; /* neon accent (sparingly) */
+    --green: #00b85c;
+    --greenBright: #00ff66;
 
     /* Light theme (default) */
     --bg: #ffffff;
@@ -57,7 +57,6 @@
     line-height: 1.55;
   }
 
-  /* Make dark mode feel premium (subtle glow, not neon wall) */
   [data-theme="dark"] body{
     background:
       radial-gradient(900px 420px at 20% 0%, rgba(0,255,102,.16), rgba(7,10,8,0) 60%),
@@ -84,7 +83,6 @@
     border-bottom: 1px solid var(--line);
     backdrop-filter: blur(10px);
   }
-
   [data-theme="dark"] .topbar{
     background: rgba(0,0,0,.30);
   }
@@ -97,13 +95,19 @@
     padding: 12px 0;
   }
 
+  .logo{
+    display: flex;
+    align-items: center;
+    min-width: 120px;
+    flex: 0 0 auto;
+  }
+
   .logo img{
     height: 40px;
     width: auto;
     display: block;
     filter: drop-shadow(0 10px 18px rgba(0,0,0,.20));
   }
-
   [data-theme="dark"] .logo img{
     filter: drop-shadow(0 10px 18px rgba(0,0,0,.45));
   }
@@ -130,7 +134,6 @@
     border-color: var(--line);
     background: rgba(0,0,0,.03);
   }
-
   [data-theme="dark"] .nav a:hover{
     background: rgba(255,255,255,.06);
   }
@@ -185,22 +188,17 @@
     color: var(--text);
     font-weight: 800;
     cursor: pointer;
+    line-height: 1;
   }
-  .toggle:hover{
-    background: rgba(0,0,0,.03);
-  }
-  [data-theme="dark"] .toggle:hover{
-    background: rgba(255,255,255,.06);
-  }
+  .toggle:hover{ background: rgba(0,0,0,.03); }
+  [data-theme="dark"] .toggle:hover{ background: rgba(255,255,255,.06); }
 
   /* Hero */
   .hero{
     padding: 54px 0 26px 0;
     background: linear-gradient(180deg, rgba(0,184,92,.12), rgba(255,255,255,0));
   }
-  [data-theme="dark"] .hero{
-    background: transparent;
-  }
+  [data-theme="dark"] .hero{ background: transparent; }
 
   .hero-grid{
     display: grid;
@@ -221,9 +219,7 @@
     font-size: 13px;
     width: fit-content;
   }
-  [data-theme="dark"] .kicker{
-    background: rgba(255,255,255,.04);
-  }
+  [data-theme="dark"] .kicker{ background: rgba(255,255,255,.04); }
 
   .dot{
     width: 9px;
@@ -238,6 +234,7 @@
     line-height: 1.06;
     letter-spacing: -0.7px;
     margin: 14px 0 12px 0;
+    max-width: 18ch;
   }
 
   .lead{
@@ -261,6 +258,22 @@
     border-radius: var(--radius);
     padding: 18px;
     box-shadow: var(--shadow);
+  }
+
+  /* Missing classes (now styled) */
+  .trust-box{
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+  }
+
+  .cta-bar{
+    margin-top: 14px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
   .trust-title{
@@ -294,7 +307,7 @@
   }
 
   .section{
-    padding: 56px 0;
+    padding: 44px 0;
     border-top: 1px solid var(--line);
   }
 
@@ -373,6 +386,7 @@
     font-style: italic;
     margin: 0;
   }
+
   .who{
     margin-top: 8px;
     color: var(--muted);
@@ -402,22 +416,6 @@
     font-weight: 800;
     font-size: 13px;
   }
-
-  .trust-box{
-  border: 1px solid var(--line);
-  background: var(--panel);
-  border-radius: var(--radius);
-  padding: 18px;
-  box-shadow: var(--shadow);
-}
-
-.cta-bar{
-  margin-top: 14px;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
 
   input, textarea, select{
     padding: 12px;
@@ -456,17 +454,62 @@
     background: var(--bg2);
   }
 
-  /* Responsive */
+  /* Responsive: main layout */
   @media (max-width: 920px){
     .hero-grid{ grid-template-columns: 1fr; }
     .grid-2{ grid-template-columns: 1fr; }
     .stats{ grid-template-columns: 1fr; }
     .contact-grid{ grid-template-columns: 1fr; }
     h1{ font-size: 36px; }
-    .topbar-inner{ flex-direction: column; align-items: flex-start; }
-    .nav{ justify-content: flex-start; }
   }
-</style>
+
+  /* Responsive: HEADER polish (this is the main fix) */
+  @media (max-width: 700px){
+    .container{ padding: 0 14px; }
+
+    .topbar-inner{
+      flex-direction: row;          /* keep one row */
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 0;
+      flex-wrap: nowrap;
+    }
+
+    .logo img{
+      height: 32px;                 /* smaller logo */
+      max-width: 170px;
+    }
+
+    .nav{
+      flex-wrap: nowrap;            /* prevent ugly wrap */
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .nav a{
+      padding: 8px 10px;
+      font-size: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.70);
+    }
+    [data-theme="dark"] .nav a{
+      background: rgba(255,255,255,.04);
+    }
+
+    .nav a.btn{
+      padding: 9px 12px;
+      font-size: 12px;
+    }
+
+    .toggle{
+      padding: 9px 10px;
+      border-radius: 12px;
+      min-width: 42px;
+      text-align: center;
+    }
+  }
+  </style>
 </head>
 
 <body>
@@ -481,7 +524,7 @@
         <a href="#services">Services</a>
         <a href="#proof">Proof</a>
         <a href="#contact" class="btn btn-primary">Contact</a>
-        <button class="toggle" id="themeToggle" type="button" aria-label="Toggle theme">🌙</button>
+        <button class="toggle" id="themeToggle" type="button" aria-label="Toggle theme" aria-pressed="false">🌙</button>
       </div>
     </div>
   </div>
@@ -558,7 +601,7 @@
     </div>
   </div>
 
-  <!-- Proof / Credibility -->
+  <!-- Proof -->
   <div id="proof" class="section">
     <div class="container">
       <h2>Proof</h2>
@@ -616,7 +659,6 @@
           </p>
         </div>
 
-        <!-- Embedded form (replace action URL once you create Formspree) -->
         <form action="https://formspree.io/f/mykzrgzj" method="POST">
           <label>
             Name
@@ -635,8 +677,8 @@
               <option>Dashboards & reporting</option>
               <option>Data analysis & insight</option>
               <option>Process automation</option>
-              <option>Data clean-up / quality fixes</option>
-              <option>Training / coaching</option>
+              <option>Data clean-up/quality fixes</option>
+              <option>Training/coaching</option>
               <option>Other</option>
             </select>
           </label>
@@ -668,17 +710,14 @@
     const root = document.documentElement;
     const btn = document.getElementById("themeToggle");
 
-    // Load saved preference
     const saved = localStorage.getItem("theme");
     if (saved === "dark") root.setAttribute("data-theme", "dark");
 
-    // Set icon based on current theme
     function setIcon(){
-    const isDark = root.getAttribute("data-theme") === "dark";
-    btn.textContent = isDark ? "☀️" : "🌙";
-    btn.setAttribute("aria-pressed", String(isDark));
-      }
-
+      const isDark = root.getAttribute("data-theme") === "dark";
+      btn.textContent = isDark ? "☀️" : "🌙";
+      btn.setAttribute("aria-pressed", String(isDark));
+    }
     setIcon();
 
     btn.addEventListener("click", function(){
@@ -693,7 +732,6 @@
       setIcon();
     });
   })();
-</script>
-  
+  </script>
 </body>
 </html>
