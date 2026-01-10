@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+?p<!DOCTYPE html>
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
@@ -691,42 +691,48 @@ window.addEventListener("load", function(){
           </p>
         </div>
 
-        <form action="https://formspree.io/f/mykzrgzj" method="POST">
-          <label>
-            Name
-            <input type="text" name="name" required>
-          </label>
+        <form id="contactForm" action="https://formspree.io/f/mykzrgzj" method="POST" novalidate>
+  <label>
+    Name
+    <input type="text" name="name" autocomplete="name" required>
+  </label>
 
-          <label>
-            Email
-            <input type="email" name="email" required>
-          </label>
+  <label>
+    Email
+    <input type="email" name="email" autocomplete="email" required>
+  </label>
 
-          <label>
-            What do you need?
-            <select name="service" required>
-              <option value="" selected disabled>Select one…</option>
-              <option>Dashboards & reporting</option>
-              <option>Data analysis & insight</option>
-              <option>Process automation</option>
-              <option>Data clean-up/quality fixes</option>
-              <option>Training/coaching</option>
-              <option>Other</option>
-            </select>
-          </label>
+  <label>
+    What do you need?
+    <select name="service" required>
+      <option value="" selected disabled>Select one…</option>
+      <option>Dashboards & reporting</option>
+      <option>Data analysis & insight</option>
+      <option>Process automation</option>
+      <option>Data clean-up / quality fixes</option>
+      <option>Training / coaching</option>
+      <option>Other</option>
+    </select>
+  </label>
 
-          <label>
-            Message
-            <textarea name="message" rows="6" required></textarea>
-          </label>
+  <label>
+    Message
+    <textarea name="message" rows="6" required></textarea>
+  </label>
 
-          <input type="hidden" name="_subject" value="New enquiry from data-worx.uk">
-          <input type="hidden" name="_next" value="https://www.data-worx.uk/#contact">
-          <input type="text" name="_gotcha" style="display:none">
+  <!-- Helps deliverability / inbox rules -->
+  <input type="hidden" name="_subject" value="New enquiry from data-worx.uk">
 
-          <button type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
-          <p class="small">By submitting, you agree to be contacted about your enquiry.</p>
-        </form>
+  <!-- Honeypot (spam trap) -->
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
+         style="position:absolute;left:-9999px;opacity:0;height:0;width:0;"
+         aria-hidden="true">
+
+  <button id="contactSubmit" type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
+
+  <p id="formStatus" class="small" role="status" aria-live="polite" style="margin-top:10px;"></p>
+  <p class="small">By submitting, you agree to be contacted about your enquiry.</p>
+</form>
       </div>
     </div>
   </div>
