@@ -787,6 +787,45 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+  
+<script>
+(function () {
+  const form = document.getElementById("contactForm");
+  const statusEl = document.getElementById("formStatus");
+  const btn = document.getElementById("contactSubmit");
+  if (!form || !statusEl || !btn) return;
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    statusEl.textContent = "Sending…";
+    btn.disabled = true;
+    btn.style.opacity = "0.75";
+
+    try {
+      const data = new FormData(form);
+
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: { "Accept": "application/json" }
+      });
+
+      if (res.ok) {
+        statusEl.textContent = "✅ Thanks — message sent. I’ll reply within 24 hours.";
+        form.reset();
+      } else {
+        statusEl.textContent = "⚠️ Something went wrong. Please try again or email hello@data-worx.uk.";
+      }
+    } catch (err) {
+      statusEl.textContent = "⚠️ Network issue. Please try again or email hello@data-worx.uk.";
+    } finally {
+      btn.disabled = false;
+      btn.style.opacity = "1";
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
