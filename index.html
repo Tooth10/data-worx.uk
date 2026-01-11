@@ -1,16 +1,15 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>DataWorx | Crafting Insights That Work</title>
-  <meta name="description" content="DataWorx helps organisations turn data into clear, actionable insight through analytics, dashboards, reporting, and automation." />
-
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DataWorx | Crafting Insights That Work</title>
+  <meta name="description" content="DataWorx helps organisations turn data into clear, actionable insight through analytics, dashboards, reporting, and automation." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="DataWorx | Crafting Insights That Work" />
@@ -54,8 +53,10 @@
       --radius: 18px;
       --radiusSm: 14px;
 
+      /* Brand */
       --green: #00b85c;
 
+      /* Light theme (default) */
       --bg: #ffffff;
       --bg2: #f6f8f7;
       --panel: #ffffff;
@@ -66,6 +67,8 @@
       --shadow: 0 14px 40px rgba(0,0,0,.10);
 
       --btnText: #06150c;
+      --gold1: #f7d36a;
+      --gold2: #b8860b;
     }
 
     [data-theme="dark"]{
@@ -82,7 +85,6 @@
 
     *{ box-sizing: border-box; }
     html{ scroll-behavior: smooth; }
-
     body{
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -93,8 +95,8 @@
 
     [data-theme="dark"] body{
       background:
-        radial-gradient(900px 420px at 20% 0%, rgba(0,255,102,.16), rgba(7,10,8,0) 60%),
-        radial-gradient(900px 420px at 80% 0%, rgba(0,255,102,.10), rgba(7,10,8,0) 60%),
+        radial-gradient(900px 420px at 20% 0%, rgba(0,184,92,.18), rgba(7,10,8,0) 60%),
+        radial-gradient(900px 420px at 80% 0%, rgba(0,184,92,.12), rgba(7,10,8,0) 60%),
         linear-gradient(180deg, #050806 0%, #070a08 55%, #050806 100%);
     }
 
@@ -117,9 +119,7 @@
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(10px);
     }
-    [data-theme="dark"] .topbar{
-      background: rgba(0,0,0,.30);
-    }
+    [data-theme="dark"] .topbar{ background: rgba(0,0,0,.30); }
 
     .topbar-inner{
       display: flex;
@@ -168,9 +168,7 @@
       border-color: var(--line);
       background: rgba(0,0,0,.03);
     }
-    [data-theme="dark"] .nav a:hover{
-      background: rgba(255,255,255,.06);
-    }
+    [data-theme="dark"] .nav a:hover{ background: rgba(255,255,255,.06); }
 
     /* Buttons */
     .btn{
@@ -209,9 +207,7 @@
       background: rgba(0,0,0,.03);
       text-decoration: none;
     }
-    [data-theme="dark"] .btn-ghost:hover{
-      background: rgba(255,255,255,.06);
-    }
+    [data-theme="dark"] .btn-ghost:hover{ background: rgba(255,255,255,.06); }
 
     /* Theme toggle */
     .toggle{
@@ -285,7 +281,7 @@
       margin-top: 16px;
     }
 
-    /* Cards */
+    /* Panels/cards */
     .card{
       border: 1px solid var(--line);
       background: var(--panel);
@@ -332,11 +328,11 @@
       color: var(--muted);
     }
 
-    /* Sections: reduced whitespace */
+    /* Sections */
     .section{
       position: relative;
-      padding: 6px 0; /* tighter */
-      margin-top: 18px;
+      padding: 28px 0;
+      margin-top: 8px;
       border-top: none;
     }
     .section::before{
@@ -344,16 +340,12 @@
       position: absolute;
       left: 0;
       right: 0;
-      top: -6px;
+      top: -8px;
       height: 1px;
       background: var(--line);
     }
-    .section:first-of-type{
-      margin-top: 0;
-    }
-    .section:first-of-type::before{
-      display: none;
-    }
+    .section:first-of-type{ margin-top: 0; }
+    .section:first-of-type::before{ display: none; }
 
     .section h2{
       margin: 0 0 12px 0;
@@ -368,6 +360,21 @@
       max-width: 78ch;
     }
 
+    /* Force the Results & Experience subline to stay on one line (desktop) */
+    .lede-tight{
+      max-width: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    @media (max-width: 900px){
+      .lede-tight{
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+      }
+    }
+
     .grid-2{
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -380,7 +387,6 @@
       margin-bottom: 6px;
       letter-spacing: -0.1px;
     }
-
     .card span{
       color: var(--muted);
       font-size: 14px;
@@ -395,7 +401,6 @@
       color: var(--muted);
     }
 
-    /* Proof stats */
     .stats{
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -410,18 +415,44 @@
       padding: 16px;
       box-shadow: var(--shadow);
     }
-
     .stat b{
       display: block;
       font-size: 22px;
       letter-spacing: -0.4px;
       margin-bottom: 4px;
     }
-
     .stat small{
       color: var(--muted);
       font-size: 13px;
       display: block;
+    }
+
+    /* Proof layout */
+    .proof-grid{
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .vcenter{
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* centres content vertically to avoid awkward bottom whitespace */
+    }
+
+    .card h3{
+      margin: 0 0 6px 0;
+      font-size: 16px;
+      letter-spacing: -0.1px;
+    }
+
+    .bullets{
+      margin: 10px 0 0 0;
+      padding-left: 16px;
+      color: var(--muted);
+      font-size: 13px;
     }
 
     .quote{
@@ -433,41 +464,60 @@
     }
 
     .who{
-      margin-top: 8px;
+      margin-top: 10px;
       color: var(--muted);
       font-size: 13px;
       font-style: normal;
     }
 
-    /* CONTACT (Option A) */
+    .proof-note{
+      grid-column: 2 / 4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 14px 16px;
+    }
+
+    .badge{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 800;
+      font-size: 12px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: linear-gradient(180deg, var(--gold1), #fff2c2);
+      color: #3a2a00;
+      white-space: nowrap;
+    }
+    [data-theme="dark"] .badge{
+      border-color: rgba(255,255,255,.18);
+      background: linear-gradient(180deg, #caa23a, #6f560d);
+      color: rgba(255,255,255,.92);
+    }
+    .badge-dot{
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold2);
+      box-shadow: 0 0 0 6px rgba(184,134,11,.16);
+    }
+
+    /* Contact */
     .contact-grid{
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.15fr .85fr;
       gap: 14px;
       align-items: start;
     }
 
-    /* Right column: stack cards so it doesn't look empty */
     .contact-side{
       display: grid;
       gap: 14px;
-      align-content: start;
     }
 
-    /* CTA spacing fix */
-    .cta-bar{
-      margin-top: 12px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .fineprint{
-      margin-top: 12px;
-      line-height: 1.45;
-    }
-
-    /* Form styling */
     form{
       border: 1px solid var(--line);
       background: var(--panel);
@@ -507,18 +557,37 @@
       box-shadow: 0 0 0 3px rgba(0,184,92,.18);
     }
 
+    .cta-bar{
+      margin-top: 12px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
     .small{
       color: var(--muted);
       font-size: 13px;
       margin: 10px 0 0 0;
     }
 
+    .fineprint{
+      margin-top: 14px; /* fixes “squashed” spacing under Email now button */
+    }
+
     footer{
-      padding: 26px 0;
+      padding: 22px 0;
       border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 13px;
       background: var(--bg2);
+    }
+
+    .footer-inner{
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     /* Responsive */
@@ -526,10 +595,13 @@
       .hero-grid{ grid-template-columns: 1fr; }
       .grid-2{ grid-template-columns: 1fr; }
       .stats{ grid-template-columns: 1fr; }
+      .proof-grid{ grid-template-columns: 1fr; }
+      .proof-note{ grid-column: auto; }
       .contact-grid{ grid-template-columns: 1fr; }
       h1{ font-size: 36px; }
     }
 
+    /* Header polish */
     @media (max-width: 700px){
       .container{ padding: 0 14px; }
 
@@ -559,9 +631,7 @@
         border: 1px solid var(--line);
         background: rgba(255,255,255,.70);
       }
-      [data-theme="dark"] .nav a{
-        background: rgba(255,255,255,.04);
-      }
+      [data-theme="dark"] .nav a{ background: rgba(255,255,255,.04); }
 
       .nav a.btn{
         padding: 9px 12px;
@@ -588,7 +658,7 @@
 
       <div class="nav">
         <a href="#services">Services</a>
-        <a href="#proof">Proof</a>
+        <a href="#proof">Results</a>
         <a href="#contact" class="btn btn-primary">Contact</a>
         <button class="toggle" id="themeToggle" type="button" aria-label="Toggle theme" aria-pressed="false">🌙</button>
       </div>
@@ -667,86 +737,75 @@
     </div>
   </div>
 
-  <!-- Proof -->
+  <!-- Results / Proof -->
   <div id="proof" class="section">
     <div class="container">
       <h2>Results &amp; Experience</h2>
-<p>
-  Real delivery across complex organisations — turning messy data into decision-ready insight for
-  senior leaders, not dashboards that get ignored.
-</p>
+      <p class="lede-tight">Real delivery across complex organisations — turning messy data into decision-ready insight for senior leaders, not dashboards that get ignored.</p>
 
-<div class="stats">
-  <div class="stat">
-    <b>30–50%</b>
-    <small>reduction in manual reporting effort through automation and standardisation</small>
-  </div>
-
-  <div class="stat">
-    <b>Days → Hours</b>
-    <small>faster, decision-ready reporting for senior stakeholders</small>
-  </div>
-
-  <div class="stat">
-    <b>Clearer decisions</b>
-    <small>improved confidence through consistent KPIs and trusted data</small>
-  </div>
-</div>
-
-<div class="grid-2" style="margin-top:16px;">
-  <!-- Left column -->
-  <div class="card">
-  <strong>Enterprise-level delivery</strong>
-  <span>
-    Hands-on experience delivering analytics, reporting, and automation across complex organisations — supporting senior leaders with clear, decision-focused insight.
-  </span>
-
-  <div class="mini">
-    <b>In practice:</b><br>
-    • Executive dashboards tracking 1,500+ projects<br>
-    • £10bn+ capital programme reporting<br>
-    • Automated governance replacing static board packs
-  </div>
-</div>
-
-  <!-- Right column -->
-  <div>
-    <div class="grid-2">
-      <div class="card">
-        <p class="quote">
-          “DataWorx helped us simplify our reporting and made our KPIs genuinely usable.
-          We now make decisions faster and with more confidence.”
-        </p>
-        <div class="who">Head of Operations</div>
+      <div class="stats" aria-label="Outcome stats">
+        <div class="stat">
+          <b>30–50%</b>
+          <small>reduction in manual reporting effort through automation and standardisation</small>
+        </div>
+        <div class="stat">
+          <b>Days → Hours</b>
+          <small>faster decision-ready reporting for senior stakeholders</small>
+        </div>
+        <div class="stat">
+          <b>Clearer decisions</b>
+          <small>improved confidence through consistent KPIs and trusted data</small>
+        </div>
       </div>
 
-      <div class="card">
-        <p class="quote">
-          “Clear communication, strong delivery, and the automation saved us a huge amount of time
-          each week. Exactly what we needed.”
-        </p>
-        <div class="who">HR Lead</div>
-      </div>
-    </div>
+      <div class="proof-grid" aria-label="Proof content">
+        <!-- Enterprise card (shorter + vertically centred to avoid dead space) -->
+        <div class="card vcenter">
+          <h3>Enterprise-level delivery</h3>
+          <span>Hands-on experience delivering analytics, reporting, and automation across complex organisations — supporting senior leaders with clear, decision-focused insight.</span>
 
-    <p class="small" style="margin-top:14px;">
-      Experience spanning central government, healthcare, and commercial delivery — combining technical depth
-      with real-world operational understanding.
-    </p>
-  </div>
-</div>
+          <div class="mini"><b>In practice:</b></div>
+          <ul class="bullets">
+            <li>Executive dashboards tracking <b>1,500+</b> projects</li>
+            <li>Reporting across <b>£10bn+</b> capital programmes</li>
+            <li>Automated governance reporting replacing static board packs</li>
+          </ul>
+        </div>
+
+        <!-- Testimonial 1 -->
+        <div class="card">
+          <p class="quote">“DataWorx helped us simplify our reporting and made our KPIs genuinely usable. We now make decisions faster and with more confidence.”</p>
+          <div class="who">Head of Operations</div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="card">
+          <p class="quote">“Clear communication, strong delivery, and the automation saved us a huge amount of time each week. Exactly what we needed.”</p>
+          <div class="who">HR Lead</div>
+        </div>
+
+        <!-- Optional authenticity / credibility badge row -->
+        <div class="card proof-note">
+          <span style="color:var(--muted); font-size:13px;">
+            Experience spanning central government, healthcare, and commercial delivery — combining technical depth with real-world operational understanding.
+          </span>
+          <span class="badge" title="Credibility signal">
+            <span class="badge-dot" aria-hidden="true"></span>
+            Verified delivery
+          </span>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Contact (Form FIRST in HTML so it appears first on phones) -->
+  <!-- Contact (FORM FIRST in the markup so it shows first on phones) -->
   <div id="contact" class="section">
     <div class="container">
       <h2>Contact</h2>
       <p>Send a message and I’ll reply with a clear next step. Typical response time: <b>within 24 hours</b>.</p>
 
       <div class="contact-grid">
-        <!-- LEFT: Form -->
+        <!-- Form first -->
         <form id="contactForm" action="https://formspree.io/f/mykzrgzj" method="POST" novalidate>
           <label>
             Name
@@ -789,16 +848,18 @@
           <p class="small">By submitting, you agree to be contacted about your enquiry.</p>
         </form>
 
-        <!-- RIGHT: Side cards (stacked to avoid ugly whitespace) -->
+        <!-- Side column -->
         <div class="contact-side">
           <div class="card">
             <strong>Quick options</strong>
             <span>Prefer email? <a href="mailto:hello@data-worx.uk">hello@data-worx.uk</a></span>
 
             <div class="cta-bar">
-              <a class="btn btn-ghost" href="mailto:hello@data-worx.uk?subject=Enquiry%20from%20data-worx.uk">Email now</a>
+              <!-- Make this green to match Send message -->
+              <a class="btn btn-primary" href="mailto:hello@data-worx.uk?subject=Enquiry%20from%20data-worx.uk">Email now</a>
             </div>
 
+            <!-- Add breathing room so it’s not squashed -->
             <p class="small fineprint">Your details are only used to respond to your enquiry.</p>
           </div>
 
@@ -813,12 +874,12 @@
   </div>
 
   <footer>
-    <div class="container">
-      © DataWorx · <a href="mailto:hello@data-worx.uk">hello@data-worx.uk</a> · www.data-worx.uk
+    <div class="container footer-inner">
+      <div>© DataWorx · <a href="mailto:hello@data-worx.uk">hello@data-worx.uk</a> · www.data-worx.uk</div>
+      <div>Website created by <a href="https://www.bytemysystem.net" target="_blank" rel="noopener">www.bytemysystem.net</a></div>
     </div>
   </footer>
 
-  <!-- Theme toggle -->
   <script>
     (function () {
       const root = document.documentElement;
@@ -848,7 +909,6 @@
     })();
   </script>
 
-  <!-- GA event on submit -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const form = document.querySelector("form[action*='formspree']");
@@ -865,7 +925,6 @@
     });
   </script>
 
-  <!-- Formspree async submit -->
   <script>
     (function () {
       const form = document.getElementById("contactForm");
