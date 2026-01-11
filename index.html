@@ -7,12 +7,10 @@
   <title>DataWorx | Crafting Insights That Work</title>
   <meta name="description" content="DataWorx helps organisations turn data into clear, actionable insight through analytics, dashboards, reporting, and automation." />
 
-  <!-- Favicons (Safari + Chrome friendly) -->
-  <link rel="icon" href="/favicon.ico" sizes="any">
+  <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#00b85c" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="DataWorx | Crafting Insights That Work" />
@@ -32,7 +30,6 @@
   <!-- Cookie consent -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
-
   <script>
     window.addEventListener("load", function(){
       window.cookieconsent.initialise({
@@ -57,11 +54,8 @@
       --radius: 18px;
       --radiusSm: 14px;
 
-      /* Brand */
       --green: #00b85c;
-      --greenBright: #00ff66;
 
-      /* Light theme (default) */
       --bg: #ffffff;
       --bg2: #f6f8f7;
       --panel: #ffffff;
@@ -74,7 +68,6 @@
       --btnText: #06150c;
     }
 
-    /* Dark theme overrides */
     [data-theme="dark"]{
       --bg: #070a08;
       --bg2: #050806;
@@ -89,6 +82,7 @@
 
     *{ box-sizing: border-box; }
     html{ scroll-behavior: smooth; }
+
     body{
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -291,7 +285,7 @@
       margin-top: 16px;
     }
 
-    /* Panels/cards */
+    /* Cards */
     .card{
       border: 1px solid var(--line);
       background: var(--panel);
@@ -306,13 +300,6 @@
       border-radius: var(--radius);
       padding: 18px;
       box-shadow: var(--shadow);
-    }
-
-    .cta-bar{
-      margin-top: 14px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
     }
 
     .trust-title{
@@ -345,14 +332,27 @@
       color: var(--muted);
     }
 
-    /* ✅ Sections (simple + consistent + no weird gap/line issues) */
+    /* Sections: reduced whitespace */
     .section{
-      padding: 42px 0;
-      border-top: 1px solid var(--line);
+      position: relative;
+      padding: 36px 0; /* tighter */
+      margin-top: 14px;
+      border-top: none;
+    }
+    .section::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -14px;
+      height: 1px;
+      background: var(--line);
     }
     .section:first-of-type{
-      border-top: none;
-      padding-top: 46px;
+      margin-top: 0;
+    }
+    .section:first-of-type::before{
+      display: none;
     }
 
     .section h2{
@@ -424,15 +424,6 @@
       display: block;
     }
 
-    /* ✅ Proof lower grid (fixes your layout properly) */
-    .proof-lower{
-      display: grid;
-      grid-template-columns: 1.4fr .8fr .8fr;
-      gap: 14px;
-      margin-top: 14px;
-      align-items: stretch;
-    }
-
     .quote{
       border-left: 4px solid var(--green);
       padding-left: 14px;
@@ -448,7 +439,7 @@
       font-style: normal;
     }
 
-    /* Contact */
+    /* CONTACT (Option A) */
     .contact-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -456,6 +447,27 @@
       align-items: start;
     }
 
+    /* Right column: stack cards so it doesn't look empty */
+    .contact-side{
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    /* CTA spacing fix */
+    .cta-bar{
+      margin-top: 12px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .fineprint{
+      margin-top: 12px;
+      line-height: 1.45;
+    }
+
+    /* Form styling */
     form{
       border: 1px solid var(--line);
       background: var(--panel);
@@ -514,7 +526,6 @@
       .hero-grid{ grid-template-columns: 1fr; }
       .grid-2{ grid-template-columns: 1fr; }
       .stats{ grid-template-columns: 1fr; }
-      .proof-lower{ grid-template-columns: 1fr; }
       .contact-grid{ grid-template-columns: 1fr; }
       h1{ font-size: 36px; }
     }
@@ -564,37 +575,6 @@
         text-align: center;
       }
     }
-    /* =========================
-   Contact section fixes
-   ========================= */
-
-#contact .contact-grid{
-  align-items: start;
-}
-
-/* Left column wrapper */
-#contact .contact-left{
-  display: flex;
-  align-items: flex-start;
-}
-
-/* Sticky left card on desktop only */
-@media (min-width: 921px){
-  #contact .contact-left .card{
-    position: sticky;
-    top: 88px; /* below sticky header */
-  }
-}
-
-/* Better spacing inside quick options */
-#contact .cta-bar{
-  margin-top: 14px;
-  margin-bottom: 12px;
-}
-
-#contact .small{
-  margin-top: 10px;
-}
   </style>
 </head>
 
@@ -708,113 +688,114 @@
         </div>
       </div>
 
-      <!-- ✅ Fixed layout: one wide + two testimonials -->
-      <div class="proof-lower">
+      <div style="height:14px"></div>
+
+      <div class="grid-2">
         <div class="card">
           <strong>Real-world experience</strong>
           <span>
-            Experience delivering analytics, reporting, and automation across complex organisations — supporting operational teams,
-            senior stakeholders, and leadership with clear, decision-focused insight.
+            Experience delivering analytics, reporting, and automation across complex organisations — supporting operational teams, senior stakeholders, and leadership with clear, decision-focused insight.
           </span>
           <div class="mini">
             Typical environments include fast-moving programmes, evolving data, and competing priorities — where clarity matters more than perfection.
           </div>
         </div>
 
-        <div class="card">
-          <p class="quote">“DataWorx helped us simplify our reporting and made our KPIs genuinely usable. We now make decisions faster and with more confidence.”</p>
-          <div class="who">Head of Operations</div>
-        </div>
-
-        <div class="card">
-          <p class="quote">“Clear communication, strong delivery, and the automation saved us a huge amount of time each week. Exactly what we needed.”</p>
-          <div class="who">HR Lead</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Contact -->
-<div id="contact" class="section">
-  <div class="container">
-    <h2>Contact</h2>
-    <p>Send a message and I’ll reply with a clear next step. Typical response time: <b>within 24 hours</b>.</p>
-
-    <div class="contact-grid">
-      
-      <!-- Left column -->
-      <div class="contact-left">
-        <div class="card">
-          <strong>Quick options</strong>
-          <span>Prefer email? <a href="mailto:hello@data-worx.uk">hello@data-worx.uk</a></span>
-
-          <div class="cta-bar">
-            <a class="btn btn-ghost" href="mailto:hello@data-worx.uk?subject=Enquiry%20from%20data-worx.uk">
-              Email now
-            </a>
+        <div class="grid-2">
+          <div class="card">
+            <p class="quote">“DataWorx helped us simplify our reporting and made our KPIs genuinely usable. We now make decisions faster and with more confidence.”</p>
+            <div class="who">Head of Operations</div>
           </div>
 
-          <p class="small">
-            Your details are only used to respond to your enquiry.
-          </p>
+          <div class="card">
+            <p class="quote">“Clear communication, strong delivery, and the automation saved us a huge amount of time each week. Exactly what we needed.”</p>
+            <div class="who">HR Lead</div>
+          </div>
         </div>
       </div>
-
-      <!-- Right column -->
-      <form id="contactForm" action="https://formspree.io/f/mykzrgzj" method="POST" novalidate>
-        <label>
-          Name
-          <input type="text" name="name" autocomplete="name" required>
-        </label>
-
-        <label>
-          Email
-          <input type="email" name="email" autocomplete="email" required>
-        </label>
-
-        <label>
-          What do you need?
-          <select name="service" required>
-            <option value="" selected disabled>Select one…</option>
-            <option>Dashboards &amp; reporting</option>
-            <option>Data analysis &amp; insight</option>
-            <option>Process automation</option>
-            <option>Data clean-up / quality fixes</option>
-            <option>Training / coaching</option>
-            <option>Other</option>
-          </select>
-        </label>
-
-        <label>
-          Message
-          <textarea name="message" rows="6" required></textarea>
-        </label>
-
-        <input type="hidden" name="_subject" value="New enquiry from data-worx.uk">
-
-        <!-- Honeypot -->
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
-               style="position:absolute;left:-9999px;opacity:0;height:0;width:0;"
-               aria-hidden="true">
-
-        <button id="contactSubmit" type="submit" class="btn btn-primary" style="width:100%;">
-          Send message
-        </button>
-
-        <p id="formStatus" class="small" role="status" aria-live="polite" style="margin-top:12px;"></p>
-        <p class="small">By submitting, you agree to be contacted about your enquiry.</p>
-      </form>
-
     </div>
   </div>
-</div>
+
+  <!-- Contact (Form FIRST in HTML so it appears first on phones) -->
+  <div id="contact" class="section">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Send a message and I’ll reply with a clear next step. Typical response time: <b>within 24 hours</b>.</p>
+
+      <div class="contact-grid">
+        <!-- LEFT: Form -->
+        <form id="contactForm" action="https://formspree.io/f/mykzrgzj" method="POST" novalidate>
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+
+          <label>
+            What do you need?
+            <select name="service" required>
+              <option value="" selected disabled>Select one…</option>
+              <option>Dashboards &amp; reporting</option>
+              <option>Data analysis &amp; insight</option>
+              <option>Process automation</option>
+              <option>Data clean-up / quality fixes</option>
+              <option>Training / coaching</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+
+          <input type="hidden" name="_subject" value="New enquiry from data-worx.uk">
+
+          <!-- Honeypot -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
+                 style="position:absolute;left:-9999px;opacity:0;height:0;width:0;"
+                 aria-hidden="true">
+
+          <button id="contactSubmit" type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
+
+          <p id="formStatus" class="small" role="status" aria-live="polite" style="margin-top:10px;"></p>
+          <p class="small">By submitting, you agree to be contacted about your enquiry.</p>
+        </form>
+
+        <!-- RIGHT: Side cards (stacked to avoid ugly whitespace) -->
+        <div class="contact-side">
+          <div class="card">
+            <strong>Quick options</strong>
+            <span>Prefer email? <a href="mailto:hello@data-worx.uk">hello@data-worx.uk</a></span>
+
+            <div class="cta-bar">
+              <a class="btn btn-ghost" href="mailto:hello@data-worx.uk?subject=Enquiry%20from%20data-worx.uk">Email now</a>
+            </div>
+
+            <p class="small fineprint">Your details are only used to respond to your enquiry.</p>
+          </div>
+
+          <div class="card">
+            <strong>What happens next</strong>
+            <span>I’ll reply within <b>24 hours</b> with either a few quick questions or a suggested call time.</span>
+            <div class="mini"><b>Tip:</b> If you have a deadline, mention it.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="container">
       © DataWorx · <a href="mailto:hello@data-worx.uk">hello@data-worx.uk</a> · www.data-worx.uk
     </div>
   </footer>
 
+  <!-- Theme toggle -->
   <script>
     (function () {
       const root = document.documentElement;
@@ -844,6 +825,7 @@
     })();
   </script>
 
+  <!-- GA event on submit -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const form = document.querySelector("form[action*='formspree']");
@@ -860,6 +842,7 @@
     });
   </script>
 
+  <!-- Formspree async submit -->
   <script>
     (function () {
       const form = document.getElementById("contactForm");
@@ -898,6 +881,5 @@
       });
     })();
   </script>
-
 </body>
 </html>
