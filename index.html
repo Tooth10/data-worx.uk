@@ -342,10 +342,31 @@ window.addEventListener("load", function(){
     color: var(--muted);
   }
 
-  .section{
-    padding: 44px 0;
-    border-top: 1px solid var(--line);
-  }
+  /* Sections: consistent spacing + separator sits between sections (not under card shadows) */
+.section{
+  position: relative;
+  padding: 56px 0;      /* more breathing room */
+  margin-top: 26px;     /* creates a gap above the separator */
+  border-top: none;     /* we’ll draw the line with ::before instead */
+}
+
+.section::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -26px;           /* put the line in the gap */
+  height: 1px;
+  background: var(--line);
+}
+
+/* Optional: remove the separator above the first section */
+.section:first-of-type{
+  margin-top: 0;
+}
+.section:first-of-type::before{
+  display: none;
+}
 
   .section h2{
     margin: 0 0 12px 0;
