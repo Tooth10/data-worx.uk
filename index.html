@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <!-- Favicons -->
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>DataWorx | Crafting Insights That Work</title>
   <meta name="description" content="DataWorx helps organisations turn data into clear, actionable insight through analytics, dashboards, reporting, and automation." />
+
+  <!-- Favicons (Safari + Chrome friendly) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#00b85c" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="DataWorx | Crafting Insights That Work" />
@@ -17,559 +21,549 @@
   <meta property="og:url" content="https://www.data-worx.uk/" />
 
   <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RDXC7MGJZY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDXC7MGJZY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RDXC7MGJZY');
+  </script>
 
-  gtag('config', 'G-RDXC7MGJZY');
-</script>
-
+  <!-- Cookie consent -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
 
-<script>
-window.addEventListener("load", function(){
-  window.cookieconsent.initialise({
-    palette: {
-      popup: { background: "#0f1f16" },
-      button: { background: "#00b85c", text: "#001a0a" }
-    },
-    theme: "classic",
-    position: "bottom",
-    content: {
-      message: "This site uses cookies for analytics to improve performance.",
-      dismiss: "Got it",
-      link: "Learn more",
-      href: "#"
-    }
-  });
-});
-</script>
+  <script>
+    window.addEventListener("load", function(){
+      window.cookieconsent.initialise({
+        palette: {
+          popup: { background: "#0f1f16" },
+          button: { background: "#00b85c", text: "#001a0a" }
+        },
+        theme: "classic",
+        position: "bottom",
+        content: {
+          message: "This site uses cookies for analytics to improve performance.",
+          dismiss: "Got it",
+          link: "Learn more",
+          href: "#"
+        }
+      });
+    });
+  </script>
 
   <style>
-  :root{
-    --radius: 18px;
-    --radiusSm: 14px;
+    :root{
+      --radius: 18px;
+      --radiusSm: 14px;
 
-    /* Brand */
-    --green: #00b85c;
-    --greenBright: #00ff66;
+      /* Brand */
+      --green: #00b85c;
+      --greenBright: #00ff66;
 
-    /* Light theme (default) */
-    --bg: #ffffff;
-    --bg2: #f6f8f7;
-    --panel: #ffffff;
-    --panel2: #f3f5f4;
-    --text: #16221a;
-    --muted: #4b5a52;
-    --line: #e5e7eb;
-    --shadow: 0 14px 40px rgba(0,0,0,.10);
+      /* Light theme (default) */
+      --bg: #ffffff;
+      --bg2: #f6f8f7;
+      --panel: #ffffff;
+      --panel2: #f3f5f4;
+      --text: #16221a;
+      --muted: #4b5a52;
+      --line: #e5e7eb;
+      --shadow: 0 14px 40px rgba(0,0,0,.10);
 
-    --btnText: #06150c;
-  }
+      --btnText: #06150c;
+    }
 
-  /* Dark theme overrides */
-  [data-theme="dark"]{
-    --bg: #070a08;
-    --bg2: #050806;
-    --panel: rgba(255,255,255,.055);
-    --panel2: rgba(255,255,255,.075);
-    --text: rgba(255,255,255,.92);
-    --muted: rgba(255,255,255,.72);
-    --line: rgba(255,255,255,.12);
-    --shadow: 0 18px 55px rgba(0,0,0,.35);
-    --btnText: #001a0a;
-  }
+    /* Dark theme overrides */
+    [data-theme="dark"]{
+      --bg: #070a08;
+      --bg2: #050806;
+      --panel: rgba(255,255,255,.055);
+      --panel2: rgba(255,255,255,.075);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 18px 55px rgba(0,0,0,.35);
+      --btnText: #001a0a;
+    }
 
-  *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
-  body{
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--text);
-    background: var(--bg);
-    line-height: 1.55;
-  }
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.55;
+    }
 
-  [data-theme="dark"] body{
-    background:
-      radial-gradient(900px 420px at 20% 0%, rgba(0,255,102,.16), rgba(7,10,8,0) 60%),
-      radial-gradient(900px 420px at 80% 0%, rgba(0,255,102,.10), rgba(7,10,8,0) 60%),
-      linear-gradient(180deg, #050806 0%, #070a08 55%, #050806 100%);
-  }
+    [data-theme="dark"] body{
+      background:
+        radial-gradient(900px 420px at 20% 0%, rgba(0,255,102,.16), rgba(7,10,8,0) 60%),
+        radial-gradient(900px 420px at 80% 0%, rgba(0,255,102,.10), rgba(7,10,8,0) 60%),
+        linear-gradient(180deg, #050806 0%, #070a08 55%, #050806 100%);
+    }
 
-  a{ color: inherit; }
-  a:hover{ text-decoration: underline; }
+    a{ color: inherit; }
+    a:hover{ text-decoration: underline; }
 
-  .container{
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
+    .container{
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-  /* Top bar */
-  .topbar{
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: rgba(255,255,255,.78);
-    border-bottom: 1px solid var(--line);
-    backdrop-filter: blur(10px);
-  }
-  [data-theme="dark"] .topbar{
-    background: rgba(0,0,0,.30);
-  }
-
-  .topbar-inner{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 12px 0;
-  }
-
-  .logo{
-    display: flex;
-    align-items: center;
-    min-width: 120px;
-    flex: 0 0 auto;
-  }
-
-  .logo img{
-    height: 40px;
-    width: auto;
-    display: block;
-    filter: drop-shadow(0 10px 18px rgba(0,0,0,.20));
-  }
-  [data-theme="dark"] .logo img{
-    filter: drop-shadow(0 10px 18px rgba(0,0,0,.45));
-  }
-
-  .nav{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-
-  .nav a{
-    padding: 9px 10px;
-    border-radius: 10px;
-    font-size: 13px;
-    color: var(--muted);
-    border: 1px solid transparent;
-    text-decoration: none;
-  }
-
-  .nav a:hover{
-    color: var(--text);
-    border-color: var(--line);
-    background: rgba(0,0,0,.03);
-  }
-  [data-theme="dark"] .nav a:hover{
-    background: rgba(255,255,255,.06);
-  }
-
-  /* Buttons */
-  .btn{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 12px 16px;
-    border-radius: 12px;
-    border: 1px solid transparent;
-    font-weight: 800;
-    cursor: pointer;
-    user-select: none;
-    transition: transform .08s ease, background .2s ease, border-color .2s ease;
-  }
-  .btn:active{ transform: translateY(1px); }
-
-  .btn-primary{
-    background: var(--green);
-    color: var(--btnText);
-    border-color: rgba(0,0,0,.10);
-    text-decoration: none;
-  }
-  .btn-primary:hover{
-    background: #15c96b;
-    text-decoration: none;
-  }
-
-  .btn-ghost{
-    background: transparent;
-    border-color: var(--line);
-    color: var(--text);
-    text-decoration: none;
-  }
-  .btn-ghost:hover{
-    background: rgba(0,0,0,.03);
-    text-decoration: none;
-  }
-  [data-theme="dark"] .btn-ghost:hover{
-    background: rgba(255,255,255,.06);
-  }
-
-  /* Theme toggle */
-  .toggle{
-    padding: 10px 12px;
-    border-radius: 12px;
-    border: 1px solid var(--line);
-    background: transparent;
-    color: var(--text);
-    font-weight: 800;
-    cursor: pointer;
-    line-height: 1;
-  }
-  .toggle:hover{ background: rgba(0,0,0,.03); }
-  [data-theme="dark"] .toggle:hover{ background: rgba(255,255,255,.06); }
-
-  /* Hero */
-  .hero{
-    padding: 54px 0 26px 0;
-    background: linear-gradient(180deg, rgba(0,184,92,.12), rgba(255,255,255,0));
-  }
-  [data-theme="dark"] .hero{ background: transparent; }
-
-  .hero-grid{
-    display: grid;
-    grid-template-columns: 1.15fr .85fr;
-    gap: 22px;
-    align-items: center;
-  }
-
-  .kicker{
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    border-radius: 999px;
-    border: 1px solid var(--line);
-    background: rgba(255,255,255,.72);
-    color: var(--muted);
-    font-size: 13px;
-    width: fit-content;
-  }
-  [data-theme="dark"] .kicker{ background: rgba(255,255,255,.04); }
-
-  .dot{
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 0 7px rgba(0,184,92,.14);
-  }
-
-  h1{
-    font-size: 44px;
-    line-height: 1.06;
-    letter-spacing: -0.7px;
-    margin: 14px 0 12px 0;
-    max-width: 18ch;
-  }
-
-  .lead{
-    margin: 0 0 16px 0;
-    color: var(--muted);
-    max-width: 60ch;
-    font-size: 16px;
-  }
-
-  .hero-actions{
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 16px;
-  }
-
-  /* Panels/cards */
-  .card{
-    border: 1px solid var(--line);
-    background: var(--panel);
-    border-radius: var(--radius);
-    padding: 18px;
-    box-shadow: var(--shadow);
-  }
-
-  /* Missing classes (now styled) */
-  .trust-box{
-    border: 1px solid var(--line);
-    background: var(--panel);
-    border-radius: var(--radius);
-    padding: 18px;
-    box-shadow: var(--shadow);
-  }
-
-  .cta-bar{
-    margin-top: 14px;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .trust-title{
-    font-size: 14px;
-    margin: 0 0 10px 0;
-    letter-spacing: .2px;
-    font-weight: 800;
-  }
-
-  .trust-list{
-    margin: 0;
-    padding-left: 18px;
-    color: var(--muted);
-    font-size: 14px;
-  }
-
-  .tools{
-    margin-top: 18px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .pill{
-    border: 1px solid var(--line);
-    background: var(--panel2);
-    padding: 8px 10px;
-    border-radius: 999px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  /* Sections: consistent spacing + separator sits between sections (not under card shadows) */
-.section{
-  position: relative;
-  padding: 56px 0;      /* more breathing room */
-  margin-top: 26px;     /* creates a gap above the separator */
-  border-top: none;     /* we’ll draw the line with ::before instead */
-}
-
-.section::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -26px;           /* put the line in the gap */
-  height: 1px;
-  background: var(--line);
-}
-
-/* Optional: remove the separator above the first section */
-.section:first-of-type{
-  margin-top: 0;
-}
-.section:first-of-type::before{
-  display: none;
-}
-
-  .section h2{
-    margin: 0 0 12px 0;
-    font-size: 28px;
-    color: var(--green);
-    letter-spacing: -0.2px;
-  }
-
-  .section p{
-    margin: 0 0 18px 0;
-    color: var(--muted);
-    max-width: 78ch;
-  }
-
-  .grid-2{
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .card strong{
-    display: block;
-    font-size: 16px;
-    margin-bottom: 6px;
-    letter-spacing: -0.1px;
-  }
-
-  .card span{
-    color: var(--muted);
-    font-size: 14px;
-    display: block;
-  }
-
-  .mini{
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid var(--line);
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  .stats{
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-    margin-top: 10px;
-  }
-
-  .stat{
-    border: 1px solid var(--line);
-    background: var(--panel);
-    border-radius: var(--radius);
-    padding: 16px;
-    box-shadow: var(--shadow);
-  }
-
-  .stat b{
-    display: block;
-    font-size: 22px;
-    letter-spacing: -0.4px;
-    margin-bottom: 4px;
-  }
-
-  .stat small{
-    color: var(--muted);
-    font-size: 13px;
-    display: block;
-  }
-
-  .quote{
-    border-left: 4px solid var(--green);
-    padding-left: 14px;
-    color: var(--text);
-    font-style: italic;
-    margin: 0;
-  }
-
-  .who{
-    margin-top: 8px;
-    color: var(--muted);
-    font-size: 13px;
-    font-style: normal;
-  }
-
-  .contact-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    align-items: start;
-  }
-
-  form{
-    border: 1px solid var(--line);
-    background: var(--panel);
-    border-radius: var(--radius);
-    padding: 18px;
-    box-shadow: var(--shadow);
-  }
-
-  label{
-    display: grid;
-    gap: 8px;
-    margin-bottom: 12px;
-    font-weight: 800;
-    font-size: 13px;
-  }
-
-  input, textarea, select{
-    padding: 12px;
-    border-radius: var(--radiusSm);
-    border: 1px solid var(--line);
-    background: #ffffff;
-    color: var(--text);
-    font-size: 15px;
-    outline: none;
-  }
-
-  [data-theme="dark"] input,
-  [data-theme="dark"] textarea,
-  [data-theme="dark"] select{
-    background: rgba(0,0,0,.25);
-    border-color: rgba(255,255,255,.18);
-    color: var(--text);
-  }
-
-  input:focus, textarea:focus, select:focus{
-    border-color: var(--green);
-    box-shadow: 0 0 0 3px rgba(0,184,92,.18);
-  }
-
-  .small{
-    color: var(--muted);
-    font-size: 13px;
-    margin: 10px 0 0 0;
-  }
-
-  footer{
-    padding: 26px 0;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 13px;
-    background: var(--bg2);
-  }
-
-  /* Responsive: main layout */
-  @media (max-width: 920px){
-    .hero-grid{ grid-template-columns: 1fr; }
-    .grid-2{ grid-template-columns: 1fr; }
-    .stats{ grid-template-columns: 1fr; }
-    .contact-grid{ grid-template-columns: 1fr; }
-    h1{ font-size: 36px; }
-  }
-
-  /* Responsive: HEADER polish (this is the main fix) */
-  @media (max-width: 700px){
-    .container{ padding: 0 14px; }
+    /* Top bar */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.78);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    [data-theme="dark"] .topbar{
+      background: rgba(0,0,0,.30);
+    }
 
     .topbar-inner{
-      flex-direction: row;          /* keep one row */
+      display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      padding: 10px 0;
-      flex-wrap: nowrap;
+      gap: 12px;
+      padding: 12px 0;
+    }
+
+    .logo{
+      display: flex;
+      align-items: center;
+      min-width: 120px;
+      flex: 0 0 auto;
     }
 
     .logo img{
-      height: 32px;                 /* smaller logo */
-      max-width: 170px;
+      height: 40px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.20));
+    }
+    [data-theme="dark"] .logo img{
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.45));
     }
 
     .nav{
-      flex-wrap: nowrap;            /* prevent ugly wrap */
-      gap: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
       justify-content: flex-end;
     }
 
     .nav a{
-      padding: 8px 10px;
-      font-size: 12px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.70);
-    }
-    [data-theme="dark"] .nav a{
-      background: rgba(255,255,255,.04);
-    }
-
-    .nav a.btn{
-      padding: 9px 12px;
-      font-size: 12px;
-    }
-
-    .toggle{
       padding: 9px 10px;
-      border-radius: 12px;
-      min-width: 42px;
-      text-align: center;
+      border-radius: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      text-decoration: none;
     }
-  }
-    #contact.section {
-    margin-top: 32px;
-  }
 
+    .nav a:hover{
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(0,0,0,.03);
+    }
+    [data-theme="dark"] .nav a:hover{
+      background: rgba(255,255,255,.06);
+    }
+
+    /* Buttons */
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      cursor: pointer;
+      user-select: none;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn-primary{
+      background: var(--green);
+      color: var(--btnText);
+      border-color: rgba(0,0,0,.10);
+      text-decoration: none;
+    }
+    .btn-primary:hover{
+      background: #15c96b;
+      text-decoration: none;
+    }
+
+    .btn-ghost{
+      background: transparent;
+      border-color: var(--line);
+      color: var(--text);
+      text-decoration: none;
+    }
+    .btn-ghost:hover{
+      background: rgba(0,0,0,.03);
+      text-decoration: none;
+    }
+    [data-theme="dark"] .btn-ghost:hover{
+      background: rgba(255,255,255,.06);
+    }
+
+    /* Theme toggle */
+    .toggle{
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      font-weight: 800;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .toggle:hover{ background: rgba(0,0,0,.03); }
+    [data-theme="dark"] .toggle:hover{ background: rgba(255,255,255,.06); }
+
+    /* Hero */
+    .hero{
+      padding: 54px 0 26px 0;
+      background: linear-gradient(180deg, rgba(0,184,92,.12), rgba(255,255,255,0));
+    }
+    [data-theme="dark"] .hero{ background: transparent; }
+
+    .hero-grid{
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .kicker{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.72);
+      color: var(--muted);
+      font-size: 13px;
+      width: fit-content;
+    }
+    [data-theme="dark"] .kicker{ background: rgba(255,255,255,.04); }
+
+    .dot{
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 7px rgba(0,184,92,.14);
+    }
+
+    h1{
+      font-size: 44px;
+      line-height: 1.06;
+      letter-spacing: -0.7px;
+      margin: 14px 0 12px 0;
+      max-width: 18ch;
+    }
+
+    .lead{
+      margin: 0 0 16px 0;
+      color: var(--muted);
+      max-width: 60ch;
+      font-size: 16px;
+    }
+
+    .hero-actions{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    /* Panels/cards */
+    .card{
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .trust-box{
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-bar{
+      margin-top: 14px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .trust-title{
+      font-size: 14px;
+      margin: 0 0 10px 0;
+      letter-spacing: .2px;
+      font-weight: 800;
+    }
+
+    .trust-list{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .tools{
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill{
+      border: 1px solid var(--line);
+      background: var(--panel2);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ✅ Sections (simple + consistent + no weird gap/line issues) */
+    .section{
+      padding: 66px 0;
+      border-top: 1px solid var(--line);
+    }
+    .section:first-of-type{
+      border-top: none;
+      padding-top: 56px;
+    }
+
+    .section h2{
+      margin: 0 0 12px 0;
+      font-size: 28px;
+      color: var(--green);
+      letter-spacing: -0.2px;
+    }
+
+    .section p{
+      margin: 0 0 18px 0;
+      color: var(--muted);
+      max-width: 78ch;
+    }
+
+    .grid-2{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card strong{
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+      letter-spacing: -0.1px;
+    }
+
+    .card span{
+      color: var(--muted);
+      font-size: 14px;
+      display: block;
+    }
+
+    .mini{
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Proof stats */
+    .stats{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .stat{
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat b{
+      display: block;
+      font-size: 22px;
+      letter-spacing: -0.4px;
+      margin-bottom: 4px;
+    }
+
+    .stat small{
+      color: var(--muted);
+      font-size: 13px;
+      display: block;
+    }
+
+    /* ✅ Proof lower grid (fixes your layout properly) */
+    .proof-lower{
+      display: grid;
+      grid-template-columns: 1.4fr .8fr .8fr;
+      gap: 14px;
+      margin-top: 14px;
+      align-items: stretch;
+    }
+
+    .quote{
+      border-left: 4px solid var(--green);
+      padding-left: 14px;
+      color: var(--text);
+      font-style: italic;
+      margin: 0;
+    }
+
+    .who{
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-style: normal;
+    }
+
+    /* Contact */
+    .contact-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    form{
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    label{
+      display: grid;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    input, textarea, select{
+      padding: 12px;
+      border-radius: var(--radiusSm);
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--text);
+      font-size: 15px;
+      outline: none;
+    }
+
+    [data-theme="dark"] input,
+    [data-theme="dark"] textarea,
+    [data-theme="dark"] select{
+      background: rgba(0,0,0,.25);
+      border-color: rgba(255,255,255,.18);
+      color: var(--text);
+    }
+
+    input:focus, textarea:focus, select:focus{
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(0,184,92,.18);
+    }
+
+    .small{
+      color: var(--muted);
+      font-size: 13px;
+      margin: 10px 0 0 0;
+    }
+
+    footer{
+      padding: 26px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      background: var(--bg2);
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .grid-2{ grid-template-columns: 1fr; }
+      .stats{ grid-template-columns: 1fr; }
+      .proof-lower{ grid-template-columns: 1fr; }
+      .contact-grid{ grid-template-columns: 1fr; }
+      h1{ font-size: 36px; }
+    }
+
+    @media (max-width: 700px){
+      .container{ padding: 0 14px; }
+
+      .topbar-inner{
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px 0;
+        flex-wrap: nowrap;
+      }
+
+      .logo img{
+        height: 32px;
+        max-width: 170px;
+      }
+
+      .nav{
+        flex-wrap: nowrap;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      .nav a{
+        padding: 8px 10px;
+        font-size: 12px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,.70);
+      }
+      [data-theme="dark"] .nav a{
+        background: rgba(255,255,255,.04);
+      }
+
+      .nav a.btn{
+        padding: 9px 12px;
+        font-size: 12px;
+      }
+
+      .toggle{
+        padding: 9px 10px;
+        border-radius: 12px;
+        min-width: 42px;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 
@@ -594,7 +588,7 @@ window.addEventListener("load", function(){
   <div class="hero">
     <div class="container hero-grid">
       <div>
-        <div class="kicker"><span class="dot"></span> Practical analytics, reporting & automation</div>
+        <div class="kicker"><span class="dot"></span> Practical analytics, reporting &amp; automation</div>
         <h1>Turning Data into Clear, Actionable Insight</h1>
         <p class="lead">
           DataWorx helps organisations make better decisions through practical data analysis, reporting, and automation —
@@ -636,13 +630,13 @@ window.addEventListener("load", function(){
 
       <div class="grid-2">
         <div class="card">
-          <strong>Data Analysis & Insight</strong>
+          <strong>Data Analysis &amp; Insight</strong>
           <span>Clear findings from complex data, with practical recommendations.</span>
           <div class="mini"><b>Typical outputs:</b> insight brief, KPI review, trend analysis</div>
         </div>
 
         <div class="card">
-          <strong>Dashboards & Reporting</strong>
+          <strong>Dashboards &amp; Reporting</strong>
           <span>Power BI, Excel, SQL and cloud platforms (including Azure and BigQuery).</span>
           <div class="mini"><b>Typical outputs:</b> exec dashboard, board pack, automated refresh</div>
         </div>
@@ -654,7 +648,7 @@ window.addEventListener("load", function(){
         </div>
 
         <div class="card">
-          <strong>Data Strategy & Support</strong>
+          <strong>Data Strategy &amp; Support</strong>
           <span>Pragmatic advice on what to measure, how to report, and how to scale.</span>
           <div class="mini"><b>Typical outputs:</b> metrics framework, reporting roadmap</div>
         </div>
@@ -683,19 +677,19 @@ window.addEventListener("load", function(){
         </div>
       </div>
 
-      <div style="height:14px"></div>
-<div class="grid-2">
-  <div class="card">
-    <strong>Real-world experience</strong>
-    <span>
-      Experience delivering analytics, reporting, and automation across complex organisations — supporting operational teams, senior stakeholders, and leadership with clear, decision-focused insight.
-    </span>
-    <div class="mini">
-      Typical environments include fast-moving programmes, evolving data, and competing priorities — where clarity matters more than perfection.
-    </div>
-  </div>
+      <!-- ✅ Fixed layout: one wide + two testimonials -->
+      <div class="proof-lower">
+        <div class="card">
+          <strong>Real-world experience</strong>
+          <span>
+            Experience delivering analytics, reporting, and automation across complex organisations — supporting operational teams,
+            senior stakeholders, and leadership with clear, decision-focused insight.
+          </span>
+          <div class="mini">
+            Typical environments include fast-moving programmes, evolving data, and competing priorities — where clarity matters more than perfection.
+          </div>
+        </div>
 
-      <div class="grid-2">
         <div class="card">
           <p class="quote">“DataWorx helped us simplify our reporting and made our KPIs genuinely usable. We now make decisions faster and with more confidence.”</p>
           <div class="who">Head of Operations</div>
@@ -704,9 +698,9 @@ window.addEventListener("load", function(){
         <div class="card">
           <p class="quote">“Clear communication, strong delivery, and the automation saved us a huge amount of time each week. Exactly what we needed.”</p>
           <div class="who">HR Lead</div>
-
         </div>
       </div>
+
     </div>
   </div>
 
@@ -732,47 +726,46 @@ window.addEventListener("load", function(){
         </div>
 
         <form id="contactForm" action="https://formspree.io/f/mykzrgzj" method="POST" novalidate>
-  <label>
-    Name
-    <input type="text" name="name" autocomplete="name" required>
-  </label>
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
 
-  <label>
-    Email
-    <input type="email" name="email" autocomplete="email" required>
-  </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
 
-  <label>
-    What do you need?
-    <select name="service" required>
-      <option value="" selected disabled>Select one…</option>
-      <option>Dashboards & reporting</option>
-      <option>Data analysis & insight</option>
-      <option>Process automation</option>
-      <option>Data clean-up / quality fixes</option>
-      <option>Training / coaching</option>
-      <option>Other</option>
-    </select>
-  </label>
+          <label>
+            What do you need?
+            <select name="service" required>
+              <option value="" selected disabled>Select one…</option>
+              <option>Dashboards &amp; reporting</option>
+              <option>Data analysis &amp; insight</option>
+              <option>Process automation</option>
+              <option>Data clean-up / quality fixes</option>
+              <option>Training / coaching</option>
+              <option>Other</option>
+            </select>
+          </label>
 
-  <label>
-    Message
-    <textarea name="message" rows="6" required></textarea>
-  </label>
+          <label>
+            Message
+            <textarea name="message" rows="6" required></textarea>
+          </label>
 
-  <!-- Helps deliverability / inbox rules -->
-  <input type="hidden" name="_subject" value="New enquiry from data-worx.uk">
+          <input type="hidden" name="_subject" value="New enquiry from data-worx.uk">
 
-  <!-- Honeypot (spam trap) -->
-  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
-         style="position:absolute;left:-9999px;opacity:0;height:0;width:0;"
-         aria-hidden="true">
+          <!-- Honeypot -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
+                 style="position:absolute;left:-9999px;opacity:0;height:0;width:0;"
+                 aria-hidden="true">
 
-  <button id="contactSubmit" type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
+          <button id="contactSubmit" type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
 
-  <p id="formStatus" class="small" role="status" aria-live="polite" style="margin-top:10px;"></p>
-  <p class="small">By submitting, you agree to be contacted about your enquiry.</p>
-</form>
+          <p id="formStatus" class="small" role="status" aria-live="polite" style="margin-top:10px;"></p>
+          <p class="small">By submitting, you agree to be contacted about your enquiry.</p>
+        </form>
       </div>
     </div>
   </div>
@@ -784,88 +777,88 @@ window.addEventListener("load", function(){
   </footer>
 
   <script>
-  (function () {
-    const root = document.documentElement;
-    const btn = document.getElementById("themeToggle");
+    (function () {
+      const root = document.documentElement;
+      const btn = document.getElementById("themeToggle");
 
-    const saved = localStorage.getItem("theme");
-    if (saved === "dark") root.setAttribute("data-theme", "dark");
+      const saved = localStorage.getItem("theme");
+      if (saved === "dark") root.setAttribute("data-theme", "dark");
 
-    function setIcon(){
-      const isDark = root.getAttribute("data-theme") === "dark";
-      btn.textContent = isDark ? "☀️" : "🌙";
-      btn.setAttribute("aria-pressed", String(isDark));
-    }
-    setIcon();
-
-    btn.addEventListener("click", function(){
-      const isDark = root.getAttribute("data-theme") === "dark";
-      if (isDark) {
-        root.removeAttribute("data-theme");
-        localStorage.setItem("theme", "light");
-      } else {
-        root.setAttribute("data-theme", "dark");
-        localStorage.setItem("theme", "dark");
+      function setIcon(){
+        const isDark = root.getAttribute("data-theme") === "dark";
+        btn.textContent = isDark ? "☀️" : "🌙";
+        btn.setAttribute("aria-pressed", String(isDark));
       }
       setIcon();
-    });
-  })();
+
+      btn.addEventListener("click", function(){
+        const isDark = root.getAttribute("data-theme") === "dark";
+        if (isDark) {
+          root.removeAttribute("data-theme");
+          localStorage.setItem("theme", "light");
+        } else {
+          root.setAttribute("data-theme", "dark");
+          localStorage.setItem("theme", "dark");
+        }
+        setIcon();
+      });
+    })();
   </script>
 
   <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector("form[action*='formspree']");
-  if (!form) return;
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector("form[action*='formspree']");
+      if (!form) return;
 
-  form.addEventListener("submit", function () {
-    if (window.gtag) {
-      gtag('event', 'generate_lead', {
-        event_category: 'contact',
-        event_label: 'contact_form'
+      form.addEventListener("submit", function () {
+        if (window.gtag) {
+          gtag('event', 'generate_lead', {
+            event_category: 'contact',
+            event_label: 'contact_form'
+          });
+        }
       });
-    }
-  });
-});
-</script>
-  
-<script>
-(function () {
-  const form = document.getElementById("contactForm");
-  const statusEl = document.getElementById("formStatus");
-  const btn = document.getElementById("contactSubmit");
-  if (!form || !statusEl || !btn) return;
+    });
+  </script>
 
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
+  <script>
+    (function () {
+      const form = document.getElementById("contactForm");
+      const statusEl = document.getElementById("formStatus");
+      const btn = document.getElementById("contactSubmit");
+      if (!form || !statusEl || !btn) return;
 
-    statusEl.textContent = "Sending…";
-    btn.disabled = true;
-    btn.style.opacity = "0.75";
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-    try {
-      const data = new FormData(form);
+        statusEl.textContent = "Sending…";
+        btn.disabled = true;
+        btn.style.opacity = "0.75";
 
-      const res = await fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: { "Accept": "application/json" }
+        try {
+          const data = new FormData(form);
+
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: data,
+            headers: { "Accept": "application/json" }
+          });
+
+          if (res.ok) {
+            statusEl.textContent = "✅ Thanks — message sent. I’ll reply within 24 hours.";
+            form.reset();
+          } else {
+            statusEl.textContent = "⚠️ Something went wrong. Please try again or email hello@data-worx.uk.";
+          }
+        } catch (err) {
+          statusEl.textContent = "⚠️ Network issue. Please try again or email hello@data-worx.uk.";
+        } finally {
+          btn.disabled = false;
+          btn.style.opacity = "1";
+        }
       });
-
-      if (res.ok) {
-        statusEl.textContent = "✅ Thanks — message sent. I’ll reply within 24 hours.";
-        form.reset();
-      } else {
-        statusEl.textContent = "⚠️ Something went wrong. Please try again or email hello@data-worx.uk.";
-      }
-    } catch (err) {
-      statusEl.textContent = "⚠️ Network issue. Please try again or email hello@data-worx.uk.";
-    } finally {
-      btn.disabled = false;
-      btn.style.opacity = "1";
-    }
-  });
-})();
-</script>
+    })();
+  </script>
 
 </body>
 </html>
