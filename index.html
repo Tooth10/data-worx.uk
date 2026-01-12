@@ -10,6 +10,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DataWorx | Crafting Insights That Work</title>
   <link rel="canonical" href="https://www.data-worx.uk/">
+  <script>
+  (function () {
+    var host = window.location.hostname;
+    if (host === "data-worx.uk") {
+      window.location.replace("https://www.data-worx.uk" + window.location.pathname + window.location.search + window.location.hash);
+    }
+  })();
+</script>
   <meta name="description" content="DataWorx helps organisations turn data into clear, actionable insight through analytics, dashboards, reporting, and automation." />
 
   <!-- Open Graph -->
