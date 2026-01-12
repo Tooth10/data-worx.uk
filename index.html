@@ -286,6 +286,10 @@
       border-radius: var(--radius);
       padding: 18px;
       box-shadow: var(--shadow);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .trust-box{
@@ -332,6 +336,13 @@
       padding: 28px 0;
       margin-top: 8px;
       border-top: none;
+    }
+    .section-intro{
+      max-width: none;
+      white-space: nowrap;
+    }
+    .reassurance{
+      max-width: none;
     }
     .section::before{
       content: "";
@@ -742,7 +753,9 @@
   <div id="proof" class="section">
     <div class="container">
       <h2>Results & Experience</h2>
-      <p>Real delivery across complex organisations — turning messy data into decision-ready insight for leaders who need answers, not noise.</p>
+      <p class="section-intro">
+        Real delivery across complex organisations — turning messy data into decision-ready insight for leaders who need answers, not noise.
+      </p>
 
       <div class="stats" aria-label="Outcome stats">
         <div class="stat">
@@ -838,8 +851,8 @@
       </div>
     </div>
 
-    <p class="small" style="margin-top:18px;">
-      If you’re not sure what you need yet, that’s fine. We’re happy to help you work through the options and recommend the most appropriate approach before any commitment.
+    <p class="small reassurance">
+        If you’re not sure what you need yet, that’s fine. We’re happy to help you work through the options and recommend the most appropriate approach before any commitment.
     </p>
   </div>
 </div>
