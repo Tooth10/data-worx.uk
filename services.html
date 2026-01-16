@@ -335,7 +335,7 @@
     .section p{
       margin: 0 0 18px 0;
       color: var(--muted);
-      max-width: 78ch;
+      max-width: none;
     }
 
     .grid-2{
@@ -449,6 +449,16 @@
   background: var(--line);
   pointer-events: none;
 }
+  /* Full-width page divider */
+.page-divider{
+  height: 1px;
+  width: 100vw;
+  margin: 18px 0 8px 0;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
   </style>
 </head>
 
@@ -491,7 +501,6 @@
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="index.html#contact">Request a call</a>
-          <a class="btn btn-ghost" href="#services">View services</a>
         </div>
       </div>
 
@@ -540,7 +549,10 @@
       </div>
     </div>
   </div>
-
+  
+  <!-- Full-width divider after hero -->
+  <div class="page-divider" aria-hidden="true"></div>
+  
   <!-- SERVICE: DASHBOARDS -->
   <div id="dashboards" class="section">
     <div class="container">
