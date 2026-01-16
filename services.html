@@ -253,7 +253,7 @@
     .lead{
       margin: 0 0 16px 0;
       color: var(--muted);
-      max-width: 60ch;
+      max-width: none; /* you wanted these to breathe on desktop */
       font-size: 16px;
     }
 
@@ -271,7 +271,6 @@
       border-radius: var(--radius);
       padding: 18px;
       box-shadow: var(--shadow);
-
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -299,29 +298,14 @@
       font-size: 14px;
     }
 
-    /* Sections */
+    /* ✅ SECTION DIVIDERS (HOMEPAGE STYLE) */
     .section{
-      padding: 28px 0;
-      margin-top: 8px;
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
     }
-
-    /* REMOVE the segmented divider that was sitting behind content */
-    .section::before{ display:none; }
-
-    /* Divider that always spans the whole container width (and never gets “broken”) */
-    .section-head{
-      position: relative;
-      padding-bottom: 14px;
-      margin-bottom: 18px;
-    }
-    .section-head::after{
-      content:"";
-      position:absolute;
-      left:0;
-      right:0;
-      bottom:0;
-      height:1px;
-      background: var(--line);
+    /* first section after hero shouldn't have a line ABOVE it */
+    .section:first-of-type{
+      border-top: 0;
     }
 
     .section h2{
@@ -380,9 +364,7 @@
       align-items: center;
       justify-content: space-between;
     }
-    .footer-row .madeby{
-      opacity: .9;
-    }
+    .footer-row .madeby{ opacity: .9; }
 
     /* Responsive */
     @media (max-width: 920px){
@@ -431,34 +413,6 @@
         text-align: center;
       }
     }
-    /* Full-width (edge-to-edge) divider under headings */
-.section-head{
-  position: relative;
-  padding-bottom: 14px;
-  margin-bottom: 18px;
-}
-
-.section-head::after{
-  content:"";
-  position:absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0;
-  width: 100vw;          /* full viewport width */
-  height: 1px;
-  background: var(--line);
-  pointer-events: none;
-}
-  /* Full-width page divider */
-.page-divider{
-  height: 1px;
-  width: 100vw;
-  margin: 18px 0 8px 0;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(90deg, transparent, var(--line), transparent);
-}
   </style>
 </head>
 
@@ -475,7 +429,7 @@
 
       <div class="nav">
         <a href="index.html">Home</a>
-        <a href="#services">Services</a>
+        <a href="#data-analysis">Services</a>
         <a href="index.html#proof">Results</a>
         <a href="index.html#contact" class="btn btn-primary">Contact</a>
         <button class="toggle" id="themeToggle" type="button" aria-label="Toggle theme">🌙</button>
@@ -495,12 +449,14 @@
         <h1>Services</h1>
 
         <p class="lead">
-          Practical support that turns messy data into clear, decision-ready insight —
-          without overcomplication.These services are often combined depending on the problem you’re trying to solve. If you’re not sure where to start, we’ll help you work that out.
+          Practical support that turns messy data into clear, decision-ready insight — without overcomplication.
+          These services are often combined depending on the problem you’re trying to solve.
+          If you’re not sure where to start, we’ll help you work that out.
         </p>
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="index.html#contact">Request a call</a>
+          <a class="btn btn-ghost" href="#data-analysis">View services</a>
         </div>
       </div>
 
@@ -516,29 +472,14 @@
     </div>
   </div>
 
-  <!-- Full-width divider after hero -->
-  <div class="page-divider" aria-hidden="true"></div>
-  
-  <!-- SERVICES OVERVIEW -->
-  <div id="services" class="section">
-    <div class="container">
-      <!-- <div class="section-head">
-        <h2>What we do</h2>
-        <p>These services are often combined depending on the problem you’re trying to solve. If you’re not sure where to start, we’ll help you work that out.</p>
-      </div> -->
-    </div>
-  </div>
-
   <!-- SERVICE: DATA ANALYSIS -->
   <div id="data-analysis" class="section">
     <div class="container">
-      <div class="section-head">
-        <h2>Data Analysis &amp; Insight</h2>
-        <p>
-          When you need answers quickly. We turn raw or fragmented data into clear findings
-          that explain what’s happening, why it matters, and what to do next.
-        </p>
-      </div>
+      <h2>Data Analysis &amp; Insight</h2>
+      <p>
+        When you need answers quickly. We turn raw or fragmented data into clear findings
+        that explain what’s happening, why it matters, and what to do next.
+      </p>
 
       <div class="grid-2">
         <div class="card">
@@ -552,17 +493,15 @@
       </div>
     </div>
   </div>
-  
+
   <!-- SERVICE: DASHBOARDS -->
   <div id="dashboards" class="section">
     <div class="container">
-      <div class="section-head">
-        <h2>Dashboards &amp; Reporting</h2>
-        <p>
-          Dashboards only work if people trust them. We build clear, consistent reporting
-          aligned to real decisions — not vanity metrics.
-        </p>
-      </div>
+      <h2>Dashboards &amp; Reporting</h2>
+      <p>
+        Dashboards only work if people trust them. We build clear, consistent reporting
+        aligned to real decisions — not vanity metrics.
+      </p>
 
       <div class="grid-2">
         <div class="card">
@@ -580,13 +519,11 @@
   <!-- SERVICE: AUTOMATION -->
   <div id="automation" class="section">
     <div class="container">
-      <div class="section-head">
-        <h2>Process Automation</h2>
-        <p>
-          If your reporting relies on copy-paste and heroics, it’s costing time and creating risk.
-          We automate workflows to make them reliable and repeatable.
-        </p>
-      </div>
+      <h2>Process Automation</h2>
+      <p>
+        If your reporting relies on copy-paste and heroics, it’s costing time and creating risk.
+        We automate workflows to make them reliable and repeatable.
+      </p>
 
       <div class="grid-2">
         <div class="card">
@@ -604,13 +541,11 @@
   <!-- SERVICE: STRATEGY -->
   <div id="strategy" class="section">
     <div class="container">
-      <div class="section-head">
-        <h2>Data Strategy &amp; Support</h2>
-        <p>
-          When the issue isn’t the dashboard, but what you’re measuring. We help define useful
-          KPIs and a reporting direction that actually works.
-        </p>
-      </div>
+      <h2>Data Strategy &amp; Support</h2>
+      <p>
+        When the issue isn’t the dashboard, but what you’re measuring. We help define useful
+        KPIs and a reporting direction that actually works.
+      </p>
 
       <div class="grid-2">
         <div class="card">
@@ -628,13 +563,11 @@
   <!-- CTA -->
   <div class="section">
     <div class="container">
-      <div class="section-head">
-        <h2>Not sure where to start?</h2>
-        <p>
-          That’s normal. Send a quick message and we’ll tell you honestly what’s most useful —
-          even if that’s “don’t do anything yet”.
-        </p>
-      </div>
+      <h2>Not sure where to start?</h2>
+      <p>
+        That’s normal. Send a quick message and we’ll tell you honestly what’s most useful —
+        even if that’s “don’t do anything yet”.
+      </p>
 
       <a class="btn btn-primary" href="index.html#contact">Start a conversation</a>
       <a class="btn btn-ghost" href="index.html">Back to home</a>
