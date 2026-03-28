@@ -336,7 +336,7 @@
 
 .services-track {
   display: flex;
-  gap: 20px;
+  gap: 14px;
   transition: transform 0.6s ease;
   will-change: transform;
   padding-left: calc((100% - 500px) / 2);
@@ -344,17 +344,18 @@
 }
 
 .service-card {
-  flex: 0 0 500px;
-  max-width: 500px;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  opacity: 0.5;
-  transform: scale(0.9);
+  flex: 0 0 460px;
+  max-width: 460px;
+  transition: all 0.4s ease;
+  opacity: 0.4;
+  transform: scale(0.85);
 }
 
-/* active (centre) card */
 .service-card.active {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1.05);
+  z-index: 2;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.2);
 }
 
 .services-carousel {
