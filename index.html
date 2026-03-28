@@ -626,13 +626,7 @@ setInterval(() => {
     index = 0;
   }
 
-  const cardWidth = cards[0].getBoundingClientRect().width;
-  const gap = 20; // must match CSS gap
-
-  const move = index * (cardWidth + gap);
-
-  track.style.transform = `translateX(-${move}px)`;
-
+  track.style.transform = `translateX(-${index * 60}%)`;
 }, 3000);
 </script>
     
