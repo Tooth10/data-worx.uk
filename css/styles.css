@@ -346,7 +346,15 @@
 .service-card {
   flex: 0 0 500px;
   max-width: 500px;
-  box-shadow: var(--shadow);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0.5;
+  transform: scale(0.9);
+}
+
+/* active (centre) card */
+.service-card.active {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .services-carousel {
