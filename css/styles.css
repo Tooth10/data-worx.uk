@@ -337,7 +337,8 @@
   display: flex;
   gap: 20px;  
   transition: transform 0.6s ease;
-  align-items: stretch;  
+  align-items: stretch;
+  padding-left: 15%;  
 }
 
 .service-card {
