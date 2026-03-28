@@ -554,12 +554,23 @@
   margin-bottom: 18px;
 }
 
+.proof-showcase {
+  max-width: 900px;
+  margin: 20px auto:
+}
+
 .proof-carousel{
   display: flex;
   gap: 16px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding-bottom: 6px;
+  justify-content: center;   
+}
+
+.proof-slide {
+  flex: 0 0 420px;
+  scroll-snap-align: center
 }
 
 .proof-slide{
