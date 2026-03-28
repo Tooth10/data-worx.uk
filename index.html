@@ -620,13 +620,13 @@ const cards = document.querySelectorAll('.service-card');
 let servicesIndex = 0;
 
 setInterval(() => {
-  index++;
+  servicesIndex++;
 
-  if (index >= cards.length) {
-    index = 0;
+  if (servicesIndex >= cards.length) {
+    servicesIndex = 0;
   }
 
-  track.style.transform = `translateX(-${index * 100}%)`;
+  track.style.transform = `translateX(-${servicesIndex * 100}%)`;
 }, 3000);
 </script>
     
