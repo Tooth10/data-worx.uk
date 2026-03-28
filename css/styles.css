@@ -286,8 +286,9 @@
     .section::before{
       content: "";
       position: absolute;
-      left: 0;
-      right: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
       top: -8px;
       height: 1px;
       background: var(--line);
@@ -334,12 +335,11 @@
   display: flex;
   gap: 20px;
   transition: transform 0.6s ease;
-  justify-content: center;
 }
 
 .service-card {
-  flex: 0 0 70%;
-  max-width: 70%;
+  flex: 0 0 60%;
+  max-width: 60%;
 }
 
     .card strong{
