@@ -328,17 +328,21 @@
 .services-carousel {
   overflow: hidden;
   width: 100%;
-  position: relative;  
+  position: relative;
+  display: flex;
+  justify-content: center;  
 }
 
 .services-track {
   display: flex;
+  gap: 20px  
   transition: transform 0.6s ease;
+  align-items: stretch;  
 }
 
 .service-card {
-  flex: 0 0 80%;
-  max-width: 80%;
+  flex: 0 0 70%;
+  max-width: 70%;
 }
 
     .card strong{
