@@ -654,28 +654,44 @@
     track.style.transform = `translateX(-${index * step}px)`;
   }
 
+  function updateActive() {
+    cards.forEach(card => card.classList.remove('active'));
+
+    // safety check (in case of edge cases)
+    if (cards[index]) {
+      cards[index].classList.add('active');
+    }
+  }
+
+  function nextSlide() {
+    index++;
+    updatePosition(true);
+    updateActive();
+  }
+
   function startAuto() {
-    interval = setInterval(() => {
-      index++;
-      updatePosition(true);
-    }, 3000);
+    interval = setInterval(nextSlide, 3000);
   }
 
   track.addEventListener('transitionend', () => {
-    // if we've moved onto the clone of the first card
+    // hit clone at end → jump to real first
     if (index === cards.length - 1) {
       index = 1;
       updatePosition(false);
+      updateActive();
     }
 
-    // if we've moved onto the clone of the last card
+    // hit clone at start → jump to real last
     if (index === 0) {
       index = cards.length - 2;
       updatePosition(false);
+      updateActive();
     }
   });
 
+  // initialise
   updatePosition(false);
+  updateActive();
   startAuto();
 })();
 </script>
