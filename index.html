@@ -60,7 +60,7 @@
 <head>
   <meta charset="UTF-8">
   <title>DataWorx</title>
-  <link rel="stylesheet" href="css/styles.css?v=16">
+  <link rel="stylesheet" href="css/styles.css?v=17">
 </head>
 
 <body>
@@ -130,43 +130,80 @@
     <div class="services-carousel">
   <div class="services-track">
 
-    <div class="card service-card">
-      <strong>Data Analysis & Insight</strong>
-      <span>Clear findings from complex data, with practical recommendations.</span>
-      <div class="mini"><b>Typical outputs:</b> insight brief, KPI review, trend analysis</div>
-      <div class="moreline">
-        <a href="services.html">Click here for more info →</a>
-      </div>
+  <!-- ORIGINAL 4 -->
+  <div class="card service-card">
+    <strong>Data Analysis & Insight</strong>
+    <span>Clear findings from complex data, with practical recommendations.</span>
+    <div class="mini"><b>Typical outputs:</b> insight brief, KPI review, trend analysis</div>
+    <div class="moreline">
+      <a href="services.html">Click here for more info →</a>
     </div>
-
-    <div class="card service-card">
-      <strong>Dashboards & Reporting</strong>
-      <span>Power BI, Excel, SQL and cloud platforms (including Azure and BigQuery).</span>
-      <div class="mini"><b>Typical outputs:</b> exec dashboard, board pack, automated refresh</div>
-      <div class="moreline">
-        <a href="services.html">Click here for more info →</a>
-      </div>
-    </div>
-
-    <div class="card service-card">
-      <strong>Process Automation</strong>
-      <span>Smarter workflows that reduce manual effort and improve consistency.</span>
-      <div class="mini"><b>Typical outputs:</b> automated reporting, data pipelines, QA checks</div>
-      <div class="moreline">
-        <a href="services.html">Click here for more info →</a>
-      </div>
-    </div>
-
-    <div class="card service-card">
-      <strong>Data Strategy & Support</strong>
-      <span>Pragmatic advice on what to measure, how to report, and how to scale.</span>
-      <div class="mini"><b>Typical outputs:</b> metrics framework, reporting roadmap</div>
-      <div class="moreline">
-        <a href="services.html">Click here for more info →</a>
-      </div>
-    </div>
-
   </div>
+
+  <div class="card service-card">
+    <strong>Dashboards & Reporting</strong>
+    <span>Power BI, Excel, SQL and cloud platforms (including Azure and BigQuery).</span>
+    <div class="mini"><b>Typical outputs:</b> exec dashboard, board pack, automated refresh</div>
+    <div class="moreline">
+      <a href="services.html">Click here for more info →</a>
+    </div>
+  </div>
+
+  <div class="card service-card">
+    <strong>Process Automation</strong>
+    <span>Smarter workflows that reduce manual effort and improve consistency.</span>
+    <div class="mini"><b>Typical outputs:</b> automated reporting, data pipelines, QA checks</div>
+    <div class="moreline">
+      <a href="services.html">Click here for more info →</a>
+    </div>
+  </div>
+
+  <div class="card service-card">
+    <strong>Data Strategy & Support</strong>
+    <span>Pragmatic advice on what to measure, how to report, and how to scale.</span>
+    <div class="mini"><b>Typical outputs:</b> metrics framework, reporting roadmap</div>
+    <div class="moreline">
+      <a href="services.html">Click here for more info →</a>
+    </div>
+  </div>
+
+  <!-- DUPLICATE 4 (for seamless loop) -->
+  <div class="card service-card">
+    <strong>Data Analysis & Insight</strong>
+    <span>Clear findings from complex data, with practical recommendations.</span>
+    <div class="mini"><b>Typical outputs:</b> insight brief, KPI review, trend analysis</div>
+    <div class="moreline">
+      <a href="services.html">Click here for more info →</a>
+    </div>
+  </div>
+
+  <div class="card service-card">
+    <strong>Dashboards & Reporting</strong>
+    <span>Power BI, Excel, SQL and cloud platforms (including Azure and BigQuery).</span>
+    <div class="mini"><b>Typical outputs:</b> exec dashboard, board pack, automated refresh</div>
+    <div class="moreline">
+      <a href="services.html">Click here for more info →</a>
+    </div>
+  </div>
+
+  <div class="card service-card">
+    <strong>Process Automation</strong>
+    <span>Smarter workflows that reduce manual effort and improve consistency.</span>
+    <div class="mini"><b>Typical outputs:</b> automated reporting, data pipelines, QA checks</div>
+    <div class="moreline">
+      <a href="services.html">Click here for more info →</a>
+    </div>
+  </div>
+
+  <div class="card service-card">
+    <strong>Data Strategy & Support</strong>
+    <span>Pragmatic advice on what to measure, how to report, and how to scale.</span>
+    <div class="mini"><b>Typical outputs:</b> metrics framework, reporting roadmap</div>
+    <div class="moreline">
+      <a href="services.html">Click here for more info →</a>
+    </div>
+  </div>
+
 </div>
 
 
@@ -622,11 +659,22 @@ let servicesIndex = 0;
 setInterval(() => {
   servicesIndex++;
 
-  if (servicesIndex >= cards.length) {
-    servicesIndex = 0;
+  track.style.transform = `translateX(-${servicesIndex * 70}%)`;
+
+  // reset smoothly when halfway (not visible to user)
+  if (servicesIndex >= cards.length / 2) {
+    setTimeout(() => {
+      track.style.transition = "none";
+      servicesIndex = 0;
+      track.style.transform = `translateX(0)`;
+      
+      // re-enable animation
+      setTimeout(() => {
+        track.style.transition = "transform 0.6s ease";
+      }, 50);
+    }, 600);
   }
 
-  track.style.transform = `translateX(-${servicesIndex * 100}%)`;
 }, 3000);
 </script>
     
