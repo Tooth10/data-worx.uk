@@ -642,11 +642,9 @@
 
   if (!track || !cards.length) return;
 
+  const cardWidth = cards[0].offsetWidth;
   const gap = 20;
-
-  function getStep() {
-    return cards[0].offsetWidth + gap;
-  }
+  const step = cardWidth + gap;
 
   let index = 1;
 
@@ -657,27 +655,32 @@
 
   function move(instant = false) {
     track.style.transition = instant ? 'none' : 'transform 0.6s ease';
-    track.style.transform = `translateX(-${index * getStep()}px)`;
+    track.style.transform = `translateX(-${index * step}px)`;
   }
 
   function next() {
     index++;
     move();
     updateActive();
-
-    if (index === cards.length - 1) {
-      setTimeout(() => {
-        index = 1;
-        move(true);
-        updateActive();
-      }, 600);
-    }
   }
 
-  setInterval(next, 3000);
+  setInterval(() => {
+    // PREVENT grey flash by resetting BEFORE visible edge
+    if (index >= cards.length - 2) {
+      index = 1;
+      move(true); // instant reset
+    }
 
+    setTimeout(() => {
+      next();
+    }, 50);
+
+  }, 3000);
+
+  // init
   move(true);
   updateActive();
+
 })();
 </script>
     
