@@ -592,7 +592,7 @@
 /* --- Proof section visuals --- */
 .proof-showcase {
   max-width: 1100px;
-  margin: 20px auto;
+  margin: 20px auto 40px auto;
   text-align: left;  
 }
 
