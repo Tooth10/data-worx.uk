@@ -329,18 +329,23 @@
   overflow: hidden;
   width: 100%;
   position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background: var(--panel2);
-  padding: 30px 0;
+  padding: 40px 0;
   border-radius: 20px;
 }
 
 .services-track {
   display: flex;
-  gap: 14px;
+  gap: 20px;
   transition: transform 0.6s ease;
   will-change: transform;
-  padding-left: calc((100% - 460px) / 2);
-  padding-right: calc((100% - 460px) / 2);
+  padding: 0;
+  justify-content: center;
 }
 
 .service-card {
