@@ -130,79 +130,65 @@
     <div class="services-carousel">
   <div class="services-track">
 
-  <!-- ORIGINAL 4 -->
-  <div class="card service-card">
-    <strong>Data Analysis & Insight</strong>
-    <span>Clear findings from complex data, with practical recommendations.</span>
-    <div class="mini"><b>Typical outputs:</b> insight brief, KPI review, trend analysis</div>
-    <div class="moreline">
-      <a href="services.html">Click here for more info →</a>
+    <!-- clone of LAST -->
+    <div class="card service-card">
+      <strong>Data Strategy & Support</strong>
+      <span>Pragmatic advice on what to measure, how to report, and how to scale.</span>
+      <div class="mini"><b>Typical outputs:</b> metrics framework, reporting roadmap</div>
+      <div class="moreline">
+        <a href="services.html">Click here for more info →</a>
+      </div>
     </div>
-  </div>
 
-  <div class="card service-card">
-    <strong>Dashboards & Reporting</strong>
-    <span>Power BI, Excel, SQL and cloud platforms (including Azure and BigQuery).</span>
-    <div class="mini"><b>Typical outputs:</b> exec dashboard, board pack, automated refresh</div>
-    <div class="moreline">
-      <a href="services.html">Click here for more info →</a>
+    <!-- REAL 1 -->
+    <div class="card service-card">
+      <strong>Data Analysis & Insight</strong>
+      <span>Clear findings from complex data, with practical recommendations.</span>
+      <div class="mini"><b>Typical outputs:</b> insight brief, KPI review, trend analysis</div>
+      <div class="moreline">
+        <a href="services.html">Click here for more info →</a>
+      </div>
     </div>
-  </div>
 
-  <div class="card service-card">
-    <strong>Process Automation</strong>
-    <span>Smarter workflows that reduce manual effort and improve consistency.</span>
-    <div class="mini"><b>Typical outputs:</b> automated reporting, data pipelines, QA checks</div>
-    <div class="moreline">
-      <a href="services.html">Click here for more info →</a>
+    <!-- REAL 2 -->
+    <div class="card service-card">
+      <strong>Dashboards & Reporting</strong>
+      <span>Power BI, Excel, SQL and cloud platforms (including Azure and BigQuery).</span>
+      <div class="mini"><b>Typical outputs:</b> exec dashboard, board pack, automated refresh</div>
+      <div class="moreline">
+        <a href="services.html">Click here for more info →</a>
+      </div>
     </div>
-  </div>
 
-  <div class="card service-card">
-    <strong>Data Strategy & Support</strong>
-    <span>Pragmatic advice on what to measure, how to report, and how to scale.</span>
-    <div class="mini"><b>Typical outputs:</b> metrics framework, reporting roadmap</div>
-    <div class="moreline">
-      <a href="services.html">Click here for more info →</a>
+    <!-- REAL 3 -->
+    <div class="card service-card">
+      <strong>Process Automation</strong>
+      <span>Smarter workflows that reduce manual effort and improve consistency.</span>
+      <div class="mini"><b>Typical outputs:</b> automated reporting, data pipelines, QA checks</div>
+      <div class="moreline">
+        <a href="services.html">Click here for more info →</a>
+      </div>
     </div>
-  </div>
 
-  <!-- DUPLICATE 4 (for seamless loop) -->
-  <div class="card service-card">
-    <strong>Data Analysis & Insight</strong>
-    <span>Clear findings from complex data, with practical recommendations.</span>
-    <div class="mini"><b>Typical outputs:</b> insight brief, KPI review, trend analysis</div>
-    <div class="moreline">
-      <a href="services.html">Click here for more info →</a>
+    <!-- REAL 4 -->
+    <div class="card service-card">
+      <strong>Data Strategy & Support</strong>
+      <span>Pragmatic advice on what to measure, how to report, and how to scale.</span>
+      <div class="mini"><b>Typical outputs:</b> metrics framework, reporting roadmap</div>
+      <div class="moreline">
+        <a href="services.html">Click here for more info →</a>
+      </div>
     </div>
-  </div>
 
-  <div class="card service-card">
-    <strong>Dashboards & Reporting</strong>
-    <span>Power BI, Excel, SQL and cloud platforms (including Azure and BigQuery).</span>
-    <div class="mini"><b>Typical outputs:</b> exec dashboard, board pack, automated refresh</div>
-    <div class="moreline">
-      <a href="services.html">Click here for more info →</a>
+    <!-- clone of FIRST -->
+    <div class="card service-card">
+      <strong>Data Analysis & Insight</strong>
+      <span>Clear findings from complex data, with practical recommendations.</span>
+      <div class="mini"><b>Typical outputs:</b> insight brief, KPI review, trend analysis</div>
+      <div class="moreline">
+        <a href="services.html">Click here for more info →</a>
+      </div>
     </div>
-  </div>
-
-  <div class="card service-card">
-    <strong>Process Automation</strong>
-    <span>Smarter workflows that reduce manual effort and improve consistency.</span>
-    <div class="mini"><b>Typical outputs:</b> automated reporting, data pipelines, QA checks</div>
-    <div class="moreline">
-      <a href="services.html">Click here for more info →</a>
-    </div>
-  </div>
-
-  <div class="card service-card">
-    <strong>Data Strategy & Support</strong>
-    <span>Pragmatic advice on what to measure, how to report, and how to scale.</span>
-    <div class="mini"><b>Typical outputs:</b> metrics framework, reporting roadmap</div>
-    <div class="moreline">
-      <a href="services.html">Click here for more info →</a>
-    </div>
-  </div>
   </div>
 </div>      
 
@@ -651,45 +637,46 @@
 
 <script>
 (function () {
-  const servicesTrack = document.querySelector('.services-track');
-  const serviceCards = document.querySelectorAll('.service-card');
-  const servicesCarousel = document.querySelector('.services-carousel');
+  const track = document.querySelector('.services-track');
+  const cards = document.querySelectorAll('.service-card');
 
-  if (!servicesTrack || !serviceCards.length || !servicesCarousel) return;
+  if (!track || !cards.length) return;
 
-  let servicesIndex = 0;
-  const gap = 20; // must match CSS gap
+  const cardWidth = 500;
+  const gap = 20;
+  const step = cardWidth + gap;
 
-  function moveServicesCarousel() {
-    const cardWidth = serviceCards[0].offsetWidth;
-    const containerWidth = servicesCarousel.offsetWidth;
-    const step = cardWidth + gap;
-    const offset = (containerWidth - cardWidth) / 2;
+  let index = 1; // start on first REAL card
+  let interval;
 
-    servicesTrack.style.transform = `translateX(${offset - (servicesIndex * step)}px)`;
+  function updatePosition(useTransition = true) {
+    track.style.transition = useTransition ? 'transform 0.6s ease' : 'none';
+    track.style.transform = `translateX(-${index * step}px)`;
   }
 
-  function nextServicesSlide() {
-    servicesIndex++;
+  function startAuto() {
+    interval = setInterval(() => {
+      index++;
+      updatePosition(true);
+    }, 3000);
+  }
 
-    if (servicesIndex >= serviceCards.length / 2) {
-      servicesTrack.style.transition = 'none';
-      servicesIndex = 0;
-      moveServicesCarousel();
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          servicesTrack.style.transition = 'transform 0.6s ease';
-        });
-      });
-    } else {
-      moveServicesCarousel();
+  track.addEventListener('transitionend', () => {
+    // if we've moved onto the clone of the first card
+    if (index === cards.length - 1) {
+      index = 1;
+      updatePosition(false);
     }
-  }
 
-  moveServicesCarousel();
-  window.addEventListener('resize', moveServicesCarousel);
-  setInterval(nextServicesSlide, 3000);
+    // if we've moved onto the clone of the last card
+    if (index === 0) {
+      index = cards.length - 2;
+      updatePosition(false);
+    }
+  });
+
+  updatePosition(false);
+  startAuto();
 })();
 </script>
     
