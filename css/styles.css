@@ -562,26 +562,19 @@
 
 .proof-carousel {
   display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-top: 8px;  
-  padding-bottom: 16px;  
+  overflow: hidden;
+  width: 100%;
+  transition: transform 0.6s ease;
 }
 
 .proof-slide {
-  flex: 0 0 100%;
-  scroll-snap-align: center;
+  flex: 0 0 100%;   
+  max-width: 100%;
   border: 1px solid var(--line);
   background: var(--panel);
   border-radius: var(--radius);
   box-shadow: none;
   overflow: hidden;
-  transition: transform 0.6s ease;
-}
-
-.proof-slide:hover {
-  transform: translateY(-4px);
 }
 
 .proof-slide img {
