@@ -341,8 +341,14 @@
 }
 
 .service-card {
-  flex: 0 0 500%;
+  flex: 0 0 500px;
   max-width: 500px;  
+}
+
+.services-carousel {
+  background: var(--panel2);
+  padding: 30px 20px;
+  border-radius: 20px;
 }
 
     .card strong{
@@ -635,12 +641,6 @@
 
 #services .services-carousel {
   margin-top: 20px;
-}
-
-#services .container {
-  background: var(--panel2);
-  padding: 30px 20px;
-  border-radius: 20px;
 }
 
     /* Responsive */
