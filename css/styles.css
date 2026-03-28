@@ -334,7 +334,7 @@
   display: flex;
   gap: 20px;
   transition: transform 0.6s ease;
-  padding-left: 15%;  
+  justify-content: center;
 }
 
 .service-card {
@@ -630,6 +630,10 @@
   display: block;
 }
 
+#services .services-carousel {
+  margin-top: 20px;
+}
+
     /* Responsive */
     @media (max-width: 920px){
       .hero-grid{ grid-template-columns: 1fr; }
@@ -728,5 +732,5 @@ a.card:active {
 .moreline a:hover{
   text-decoration: underline;
 }
-
+        
 }
