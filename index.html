@@ -644,6 +644,7 @@
 
   const gap = 20;
   let index = 1;
+  let isTransitioning = false;
 
   function getStep() {
     return cards[0].offsetWidth + gap;
@@ -660,18 +661,23 @@
   }
 
   function next() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+
     index++;
     move();
     updateActive();
+  }
+
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
 
     if (index >= cards.length - 1) {
-      setTimeout(() => {
-        index = 1;
-        move(true);
-        updateActive();
-      }, 600);
+      index = 1;
+      move(true);      // jump with NO animation
+      updateActive();
     }
-  }
+  });
 
   setInterval(next, 3000);
 
