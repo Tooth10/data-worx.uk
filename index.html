@@ -649,29 +649,45 @@
   }, 4000); // 4 seconds
 </script>
 
-<script>
+<<script>
 const track = document.querySelector('.services-track');
 const cards = document.querySelectorAll('.service-card');
 
-let servicesIndex = 0;
+let index = 0;
 
-setInterval(() => {
-  servicesIndex++;
+function moveCarousel() {
+  const cardWidth = cards[0].offsetWidth + 20; // includes gap
+  const containerWidth = track.parentElement.offsetWidth;
 
-  if (servicesIndex >= cards.length / 2) {
-    servicesIndex = 0;
+  // centre the active card
+  const offset = (containerWidth - cards[0].offsetWidth) / 2;
+
+  track.style.transform = `translateX(${offset - (index * cardWidth)}px)`;
+}
+
+function nextSlide() {
+  index++;
+
+  // loop seamlessly (half because you duplicated cards)
+  if (index >= cards.length / 2) {
     track.style.transition = "none";
-    track.style.transform = `translateX(0px)`;
+    index = 0;
+    moveCarousel();
 
+    // force reflow then restore transition
     setTimeout(() => {
       track.style.transition = "transform 0.6s ease";
     }, 50);
   } else {
-    const cardWidth = cards[0].offsetWidth + 20; // include gap
-    track.style.transform = `translateX(-${servicesIndex * cardWidth}px)`;
+    moveCarousel();
   }
+}
 
-}, 3000);
+// initialise position
+window.addEventListener('load', moveCarousel);
+
+// auto slide
+setInterval(nextSlide, 3000);
 </script>
     
 </body>
