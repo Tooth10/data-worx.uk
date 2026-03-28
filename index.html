@@ -650,44 +650,47 @@
 </script>
 
 <script>
-const track = document.querySelector('.services-track');
-const cards = document.querySelectorAll('.service-card');
+(function () {
+  const servicesTrack = document.querySelector('.services-track');
+  const serviceCards = document.querySelectorAll('.service-card');
+  const servicesCarousel = document.querySelector('.services-carousel');
 
-let index = 0;
+  if (!servicesTrack || !serviceCards.length || !servicesCarousel) return;
 
-function moveCarousel() {
-  const cardWidth = cards[0].offsetWidth + 20; // includes gap
-  const containerWidth = track.parentElement.offsetWidth;
+  let servicesIndex = 0;
+  const gap = 20; // must match CSS gap
 
-  // centre the active card
-  const offset = (containerWidth - cards[0].offsetWidth) / 2;
+  function moveServicesCarousel() {
+    const cardWidth = serviceCards[0].offsetWidth;
+    const containerWidth = servicesCarousel.offsetWidth;
+    const step = cardWidth + gap;
+    const offset = (containerWidth - cardWidth) / 2;
 
-  track.style.transform = `translateX(${offset - (index * cardWidth)}px)`;
-}
-
-function nextSlide() {
-  index++;
-
-  // loop seamlessly (half because you duplicated cards)
-  if (index >= cards.length / 2) {
-    track.style.transition = "none";
-    index = 0;
-    moveCarousel();
-
-    // force reflow then restore transition
-    setTimeout(() => {
-      track.style.transition = "transform 0.6s ease";
-    }, 50);
-  } else {
-    moveCarousel();
+    servicesTrack.style.transform = `translateX(${offset - (servicesIndex * step)}px)`;
   }
-}
 
-// initialise position
-window.addEventListener('load', moveCarousel);
+  function nextServicesSlide() {
+    servicesIndex++;
 
-// auto slide
-setInterval(nextSlide, 3000);
+    if (servicesIndex >= serviceCards.length / 2) {
+      servicesTrack.style.transition = 'none';
+      servicesIndex = 0;
+      moveServicesCarousel();
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          servicesTrack.style.transition = 'transform 0.6s ease';
+        });
+      });
+    } else {
+      moveServicesCarousel();
+    }
+  }
+
+  moveServicesCarousel();
+  window.addEventListener('resize', moveServicesCarousel);
+  setInterval(nextServicesSlide, 3000);
+})();
 </script>
     
 </body>
