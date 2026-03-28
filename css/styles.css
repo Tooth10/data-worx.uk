@@ -326,9 +326,17 @@
     }
 
 .services-carousel {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background: var(--panel2);
+  padding: 40px 0;
+  border-radius: 20px;
 }
 
 .services-track {
@@ -337,6 +345,7 @@
   transition: transform 0.6s ease;
   will-change: transform;
   padding: 0;
+  justify-content: center;
 }
 
 .service-card {
