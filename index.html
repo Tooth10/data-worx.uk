@@ -617,8 +617,23 @@
 const track = document.querySelector('.services-track');
 const cards = document.querySelectorAll('.service-card');
 
-alert("Track found: " + (track !== null));
-alert("Cards found: " + cards.length);
+let index = 0;
+
+setInterval(() => {
+  index++;
+
+  if (index >= cards.length) {
+    index = 0;
+  }
+
+  const cardWidth = cards[0].getBoundingClientRect().width;
+  const gap = 20; // must match CSS gap
+
+  const move = index * (cardWidth + gap);
+
+  track.style.transform = `translateX(-${move}px)`;
+
+}, 3000);
 </script>
     
 </body>
