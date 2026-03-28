@@ -605,7 +605,7 @@
   display: flex;
   overflow: hidden;
   width: 100%;
-  margin-bottom: 40px;  
+  margin-bottom: 24px;  
 }
 
 .proof-track {
@@ -621,8 +621,7 @@
   background: var(--panel);
   border-radius: var(--radius);
   box-shadow: none;
-  overflow: hidden;
-  margin-bottom: 40px;  
+  overflow: hidden;  
 }
 
 .proof-caption {
