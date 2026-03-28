@@ -345,12 +345,6 @@
   max-width: 500px;  
 }
 
-#services .container {
-  background: var(--panel2);
-  padding: 30px 20px;
-  border-radius: 20px;
-}
-
     .card strong{
       display: block;
       font-size: 16px;
@@ -641,6 +635,12 @@
 
 #services .services-carousel {
   margin-top: 20px;
+}
+
+#services .container {
+  background: var(--panel2);
+  padding: 30px 20px;
+  border-radius: 20px;
 }
 
     /* Responsive */
