@@ -335,7 +335,7 @@
 
 .services-track {
   display: flex;
-  gap: 20px  
+  gap: 20px;  
   transition: transform 0.6s ease;
   align-items: stretch;  
 }
