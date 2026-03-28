@@ -642,57 +642,45 @@
 
   if (!track || !cards.length) return;
 
-  const cardWidth = 500;
+  const cardWidth = cards[0].offsetWidth;
   const gap = 20;
   const step = cardWidth + gap;
 
-  let index = 1; // start on first REAL card
-  let interval;
-
-  function updatePosition(useTransition = true) {
-    track.style.transition = useTransition ? 'transform 0.6s ease' : 'none';
-    track.style.transform = `translateX(-${index * step}px)`;
-  }
+  let index = 1;
 
   function updateActive() {
     cards.forEach(card => card.classList.remove('active'));
-
-    // safety check (in case of edge cases)
-    if (cards[index]) {
-      cards[index].classList.add('active');
-    }
+    if (cards[index]) cards[index].classList.add('active');
   }
 
-  function nextSlide() {
+  function move(instant = false) {
+    track.style.transition = instant ? 'none' : 'transform 0.6s ease';
+    track.style.transform = `translateX(-${index * step}px)`;
+  }
+
+  function next() {
     index++;
-    updatePosition(true);
+    move();
     updateActive();
   }
 
-  function startAuto() {
-    interval = setInterval(nextSlide, 3000);
-  }
-
-  track.addEventListener('transitionend', () => {
-    // hit clone at end → jump to real first
-    if (index === cards.length - 1) {
+  setInterval(() => {
+    // PREVENT grey flash by resetting BEFORE visible edge
+    if (index >= cards.length - 2) {
       index = 1;
-      updatePosition(false);
-      updateActive();
+      move(true); // instant reset
     }
 
-    // hit clone at start → jump to real last
-    if (index === 0) {
-      index = cards.length - 2;
-      updatePosition(false);
-      updateActive();
-    }
-  });
+    setTimeout(() => {
+      next();
+    }, 50);
 
-  // initialise
-  updatePosition(false);
+  }, 3000);
+
+  // init
+  move(true);
   updateActive();
-  startAuto();
+
 })();
 </script>
     
