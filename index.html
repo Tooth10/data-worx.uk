@@ -60,7 +60,7 @@
 <head>
   <meta charset="UTF-8">
   <title>DataWorx</title>
-  <link rel="stylesheet" href="css/styles.css?v=20">
+  <link rel="stylesheet" href="css/styles.css?v=21">
 </head>
 
 <body>
@@ -658,20 +658,17 @@ let servicesIndex = 0;
 setInterval(() => {
   servicesIndex++;
 
-  track.style.transform = `translateX(-${servicesIndex * 70}%)`;
-
-  // reset smoothly when halfway (not visible to user)
   if (servicesIndex >= cards.length / 2) {
+    servicesIndex = 0;
+    track.style.transition = "none";
+    track.style.transform = `translateX(0px)`;
+
     setTimeout(() => {
-      track.style.transition = "none";
-      servicesIndex = 0;
-      track.style.transform = `translateX(0)`;
-      
-      // re-enable animation
-      setTimeout(() => {
-        track.style.transition = "transform 0.6s ease";
-      }, 50);
-    }, 600);
+      track.style.transition = "transform 0.6s ease";
+    }, 50);
+  } else {
+    const cardWidth = cards[0].offsetWidth + 20; // include gap
+    track.style.transform = `translateX(-${servicesIndex * cardWidth}px)`;
   }
 
 }, 3000);
