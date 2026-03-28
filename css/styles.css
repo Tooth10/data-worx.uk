@@ -549,64 +549,44 @@
     }
 
 /* --- Proof section visuals --- */
-.proof-showcase{
-  margin-top: 20px;
-  margin-bottom: 18px;
-}
-
 .proof-showcase {
   max-width: 900px;
-  margin: 20px auto:
+  margin: 20px auto;
 }
 
-.proof-carousel{
+.proof-carousel {
   display: flex;
   gap: 16px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding-bottom: 6px;
-  justify-content: center;   
+  padding-bottom: 10px;
 }
 
 .proof-slide {
   flex: 0 0 420px;
-  scroll-snap-align: center
-}
-
-.proof-slide{
-  min-width: 420px;
-  max-width: 420px;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   border: 1px solid var(--line);
   background: var(--panel);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* softer shadow */
   overflow: hidden;
-}
-
-.proof-slide{
   transition: transform 0.2s ease;
 }
 
-.proof-slide:hover{
+.proof-slide:hover {
   transform: translateY(-4px);
 }
-        
-.proof-slide img{
+
+.proof-slide img {
   width: 100%;
   height: 260px;
-  object-fit: cover;  
+  object-fit: cover;
   display: block;
 }
 
-.proof-caption{
+.proof-caption {
   padding: 14px;
 }
-
-.product-actions{
-  margin-top: 12px;
-}
-
     /* Responsive */
     @media (max-width: 920px){
       .hero-grid{ grid-template-columns: 1fr; }
