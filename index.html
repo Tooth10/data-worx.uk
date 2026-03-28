@@ -613,25 +613,9 @@
   }, 4000); // 4 seconds
 </script>
 
-<script>    
-<script id="b6d3k1">
-const track = document.querySelector('.services-track');
-
-let index = 0;
-const totalSlides = document.querySelectorAll('.service-card').length;
-
-setInterval(() => {
-  index++;
-
-  if (index >= totalSlides) {
-    index = 0;
-  }
-
-  const slideWidth = document.querySelector('.service-card').offsetWidth + 20; // 20 = gap
-
-  track.style.transform = `translateX(-${index * slideWidth}px)`;
-
-}, 3000);
+<script>
+console.log("services script running");
+alert("services script running");
 </script>
     
 </body>
