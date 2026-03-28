@@ -635,6 +635,7 @@
   }, 4000); // 4 seconds
 </script>
 
+<script>
 (function () {
   const track = document.querySelector('.services-track');
   const cards = document.querySelectorAll('.service-card');
@@ -664,7 +665,6 @@
     move();
     updateActive();
 
-    // seamless reset AFTER animation completes
     if (index === cards.length - 1) {
       setTimeout(() => {
         index = 1;
@@ -676,11 +676,10 @@
 
   setInterval(next, 3000);
 
-  // init
   move(true);
   updateActive();
-
 })();
+</script>
     
 </body>
 </html>
