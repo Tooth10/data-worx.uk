@@ -335,6 +335,7 @@
   display: flex;
   gap: 20px;
   transition: transform 0.6s ease;
+  width: max-content;  
 }
 
 .service-card {
