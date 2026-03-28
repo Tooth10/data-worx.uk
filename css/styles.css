@@ -702,6 +702,18 @@
         min-width: 42px;
         text-align: center;
       }
+
+      .service-card {
+        flex: 0 0 calc(100% - 40px);
+        max-width: calc(100% - 40px);
+      }
+    
+      .services-track {
+        padding-left: 20px;
+      }
+    
+    }        
+
     /* Hero H1 spacing fix */
     h1 {
       max-width: 760px;
