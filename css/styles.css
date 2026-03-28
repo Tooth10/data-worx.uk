@@ -1,3 +1,6 @@
+body {
+  background: red !important;
+}
     :root{
       --radius: 18px;
       --radiusSm: 14px;
