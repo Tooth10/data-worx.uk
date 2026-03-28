@@ -558,6 +558,54 @@
       .enterprise-actions{ grid-template-columns: 1fr; }
     }
 
+/* --- Proof section visuals --- */
+.proof-showcase{
+  margin-top: 20px;
+  margin-bottom: 18px;
+}
+
+.proof-carousel{
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 6px;
+}
+
+.proof-slide{
+  min-width: 420px;
+  max-width: 420px;
+  scroll-snap-align: start;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.proof-slide{
+  transition: transform 0.2s ease;
+}
+
+.proof-slide:hover{
+  transform: translateY(-4px);
+}
+        
+.proof-slide img{
+  width: 100%;
+  height: 260px;
+  object-fit: cover;  
+  display: block;
+}
+
+.proof-caption{
+  padding: 14px;
+}
+
+.product-actions{
+  margin-top: 12px;
+}
+
     @media (max-width: 700px){
       .container{ padding: 0 14px; }
 
@@ -645,54 +693,6 @@ a.card:active {
 
 .moreline a:hover{
   text-decoration: underline;
-}
-
-/* --- Proof section visuals --- */
-.proof-showcase{
-  margin-top: 20px;
-  margin-bottom: 18px;
-}
-
-.proof-carousel{
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 6px;
-}
-
-.proof-slide{
-  min-width: 420px;
-  max-width: 420px;
-  scroll-snap-align: start;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.proof-slide{
-  transition: transform 0.2s ease;
-}
-
-.proof-slide:hover{
-  transform: translateY(-4px);
-}
-        
-.proof-slide img{
-  width: 100%;
-  height: 260px;
-  object-fit: cover;  
-  display: block;
-}
-
-.proof-caption{
-  padding: 14px;
-}
-
-.product-actions{
-  margin-top: 12px;
 }
 
 }
