@@ -325,6 +325,25 @@
       gap: 40px 14px;
     }
 
+.leadify-banner {
+  margin-bottom: 20px;
+}
+
+.leadify-banner strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.leadify-banner .mini a {
+  color: var(--green);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.leadify-banner .mini a:hover {
+  text-decoration: underline;
+}
+
 .services-carousel {
   overflow: hidden;
   width: 100%;
