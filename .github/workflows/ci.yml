@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate static site
+        run: |
+          test -f index.html
+          test -f CNAME
+          ! grep -R -n -E '^(<<<<<<<|=======|>>>>>>>)' --include='*.html' --include='*.css' --include='*.js' .
