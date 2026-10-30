@@ -804,3 +804,19 @@ a.card:active {
   .topbar .nav.is-open { display: flex; }
   .topbar .nav a, .topbar .nav .toggle { display: block; width: 100%; text-align: left; padding: 12px; white-space: normal; }
 }
+
+/* Mobile viewport containment: prevent off-screen carousel and no-wrap content
+   from expanding the document's scrollable width. */
+html, body { max-width: 100%; overflow-x: clip; }
+@supports not (overflow: clip) { html, body { overflow-x: hidden; } }
+.section::before { left: 0; width: 100%; transform: none; }
+@media (max-width: 760px) {
+  .section-intro { white-space: normal; overflow-wrap: anywhere; }
+  .section h2 { white-space: normal; }
+  .container, .section, .hero, .hero-grid, .grid-2, .contact-grid,
+  .proof-showcase, .services-carousel { min-width: 0; max-width: 100%; }
+  .hero-grid > *, .grid-2 > *, .contact-grid > * { min-width: 0; }
+  .services-carousel, .proof-carousel { overflow: hidden; }
+  img, iframe, video { max-width: 100%; }
+  p, h1, h2, h3, .card { overflow-wrap: break-word; }
+}
