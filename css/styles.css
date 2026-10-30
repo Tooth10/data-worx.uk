@@ -789,3 +789,18 @@ a.card:active {
 }
         
 }
+
+/* Responsive navigation: prevent the desktop links widening mobile viewport */
+.topbar-inner { position: relative; min-width: 0; }
+.menu-toggle { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; flex: 0 0 44px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); color: var(--text); cursor: pointer; }
+.menu-toggle svg { width: 23px; height: 23px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; }
+@media (max-width: 760px) {
+  .topbar, .topbar-inner { max-width: 100%; }
+  .topbar-inner { flex-wrap: nowrap; }
+  .logo { min-width: 0; flex: 0 1 auto; }
+  .logo img { max-width: min(160px, 48vw); height: auto; max-height: 40px; }
+  .menu-toggle { display: inline-flex; margin-left: auto; }
+  .topbar .nav { display: none; position: absolute; top: calc(100% + 1px); left: 0; right: 0; z-index: 40; flex-direction: column; align-items: stretch; gap: 4px; padding: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 0 0 14px 14px; box-shadow: var(--shadow); }
+  .topbar .nav.is-open { display: flex; }
+  .topbar .nav a, .topbar .nav .toggle { display: block; width: 100%; text-align: left; padding: 12px; white-space: normal; }
+}
