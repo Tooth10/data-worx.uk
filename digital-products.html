@@ -32,6 +32,21 @@ main{padding:66px 0 88px}.eyebrow,.label{font-size:10px;font-weight:800;letter-s
 .demo-stage{min-width:0}
 .demo-stage .demo{margin:0}
 @media(max-width:760px){.demo-browser{grid-template-columns:1fr;gap:12px}.demo-sidebar{padding:12px}.demo-sidebar>.label{margin-bottom:8px}.demo-sidebar .tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.demo-sidebar .tabs button{min-height:56px;padding:8px 7px;grid-template-columns:22px minmax(0,1fr)}.demo-sidebar .tabs button i{display:none}.demo-sidebar .tabs button b{font-size:11px}.demo-sidebar .tabs button small{font-size:9px}.demo{padding:16px}}
+
+/* Keep the custom dashboard brief within narrow screens */
+.custom-form{min-width:0}
+.custom-form label{min-width:0}
+.custom-form select{display:block;width:100%;max-width:100%;min-width:0}
+.custom-form .wide{width:100%;min-width:0;overflow-wrap:anywhere}
+.custom-form .panel{min-width:0;overflow-wrap:anywhere}
+.custom-form .cta-button{white-space:normal}
+@media(max-width:600px){
+  .custom-form{grid-template-columns:minmax(0,1fr);gap:14px}
+  .custom-form .wide{grid-column:1}
+  .custom-form select{font-size:14px}
+  .custom-form .panel{padding:14px}
+  .demo h2{font-size:23px}
+}
 </style>
 </head>
 <body>
