@@ -258,3 +258,27 @@
 .home-page .product-note { margin: 17px 0 0; color: var(--dw-muted); font-size: 11px; }
 @media (max-width: 760px) { .home-page .product-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
 @media (max-width: 520px) { .home-page .product-grid { grid-template-columns: 1fr; } .home-page .product-card { min-height: 0; padding: 19px; } }
+
+/* Illustrative reporting dashboard */
+.home-page .dashboard-visual { min-height:345px; padding:20px; color:var(--dw-ink); background:#f0f1e9; }
+.home-page .dash-head { display:flex; justify-content:space-between; align-items:center; padding-bottom:14px; border-bottom:1px solid #d2d9cd; }
+.home-page .dash-head div { display:grid; gap:5px; }
+.home-page .dash-head span,.home-page .dash-panel-title { color:#718075; font-size:8px; font-weight:800; letter-spacing:.1em; }
+.home-page .dash-head b { color:var(--dw-green); font:20px Georgia,serif; }
+.home-page .dash-period { padding:7px 9px; border:1px solid #d9dfd5; background:#fffefa; }
+.home-page .dash-kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin:13px 0; }
+.home-page .dash-kpis>div { display:grid; gap:5px; padding:11px; border:1px solid #d9dfd5; background:#fffefa; }
+.home-page .dash-kpis small { color:#718075; font-size:8px; }
+.home-page .dash-kpis b { color:#20372a; font:20px Georgia,serif; }
+.home-page .dash-kpis em { color:#52804c; font-size:8px; font-style:normal; }
+.home-page .dash-lower { display:grid; grid-template-columns:1.2fr .8fr; gap:10px; }
+.home-page .dash-chart,.home-page .dash-table { padding:11px; border:1px solid #d9dfd5; background:#fffefa; }
+.home-page .dash-panel-title { display:flex; justify-content:space-between; margin-bottom:11px; }
+.home-page .dash-panel-title span { font-weight:400; letter-spacing:0; }
+.home-page .chart-bars { height:91px; display:flex; align-items:end; gap:8px; padding:0 5px; border-bottom:1px solid #d9dfd5; background:repeating-linear-gradient(to bottom,transparent 0,transparent 29px,#edf0e9 30px); }
+.home-page .chart-bars i { flex:1; background:linear-gradient(180deg,#76b86a,#286348); }
+.home-page .chart-labels { display:flex; justify-content:space-between; margin-top:5px; color:#718075; font-size:7px; }
+.home-page .dash-table>div:not(.dash-panel-title) { display:flex; justify-content:space-between; padding:8px 0; border-top:1px solid #edf0e9; color:#627165; font-size:8px; }
+.home-page .dash-table b { color:#20372a; }
+.home-page .dash-table .dash-alert { color:#b56738; }
+@media(max-width:700px){.home-page .dashboard-visual{min-height:0;padding:14px 11px}.home-page .dash-kpis{gap:5px}.home-page .dash-kpis>div{padding:8px 6px}.home-page .dash-kpis b{font-size:16px}.home-page .dash-lower{grid-template-columns:1fr}.home-page .dash-chart,.home-page .dash-table{padding:9px}}
