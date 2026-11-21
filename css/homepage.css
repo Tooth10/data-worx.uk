@@ -282,3 +282,5 @@
 .home-page .dash-table b { color:#20372a; }
 .home-page .dash-table .dash-alert { color:#b56738; }
 @media(max-width:700px){.home-page .dashboard-visual{min-height:0;padding:14px 11px}.home-page .dash-kpis{gap:5px}.home-page .dash-kpis>div{padding:8px 6px}.home-page .dash-kpis b{font-size:16px}.home-page .dash-lower{grid-template-columns:1fr}.home-page .dash-chart,.home-page .dash-table{padding:9px}}
+
+@media (max-width: 700px) { .home-page .hero-layout { padding-top: 0; } }
