@@ -80,5 +80,36 @@ document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()
 document.getElementById("periodFilter").onchange=e=>{const prev=e.target.value==="previous";document.getElementById("kpiRevenue").textContent=prev?"£44,100":"£48,250";document.getElementById("kpiOrders").textContent=prev?"118":"126";document.getElementById("kpiDelivery").textContent=prev?"91%":"94%";document.getElementById("kpiRating").textContent=prev?"4.5/5":"4.7/5";};
 document.querySelectorAll("#trackers input").forEach(x=>x.onchange=()=>{const all=[...document.querySelectorAll("#trackers input")];const done=all.filter(y=>y.checked).length;document.getElementById("tasksDone").textContent=done+" / "+all.length;document.getElementById("tasksLeft").textContent=all.length-done;});
 document.getElementById("regionFilter").onchange=e=>{const north=e.target.value==="north",south=e.target.value==="south";document.getElementById("regionRevenue").textContent=north?"£27,400":south?"£20,850":"£48,250";document.getElementById("regionCustomers").textContent=north?"174":south?"144":"318";document.getElementById("regionGrowth").textContent=north?"14.1%":south?"10.2%":"12.4%";document.getElementById("regionTarget").textContent=north?"88%":south?"76%":"82%";document.getElementById("monthValue").textContent=north?"£27k":south?"£21k":"£48k";document.getElementById("monthBar").style.width=north?"88%":south?"68%":"82%";document.getElementById("regionNote").textContent=north?"North is leading growth and target attainment.":south?"South is growing steadily; follow-up on target progress is recommended.":"All regions are trending above the quarterly baseline.";};
-document.getElementById("businessArea").onchange=updateBrief;document.getElementById("goal").onchange=updateBrief;function updateBrief(){const area=document.getElementById("businessArea").value,goal=document.getElementById("goal").value;const copy={Sales:"A sales pipeline view with lead stages, follow-up dates and conversion measures.",Operations:"An operations view with workload, service levels and overdue actions.",Recruitment:"A recruitment view with roles, candidates, placement stages and time-to-fill.",Finance:"A finance view with income, costs, forecast and variance measures."};document.getElementById("suggestion").textContent=goal==="Reduce manual reporting"?"A scheduled reporting pack that brings your recurring measures into one refreshable view.":goal==="Spot delays and bottlenecks"?"A workflow dashboard highlighting queues, ageing work and the steps causing delays.":goal==="Understand costs and forecasts"?"A forecast dashboard comparing actuals, expected costs and planned targets.":copy[area];}
+document.getElementById("businessArea").onchange=updateBrief;document.getElementById("goal").onchange=updateBrief;
+function updateBrief(){
+ const area=document.getElementById("businessArea").value;
+ const goal=document.getElementById("goal").value;
+ const suggestions={
+  Sales:{
+   "Track performance and follow-ups":"A sales pipeline dashboard showing lead stages, deal values, next actions and conversion rates.",
+   "Reduce manual reporting":"An automated sales summary that brings weekly leads, wins and pipeline movement into one report.",
+   "Spot delays and bottlenecks":"A sales follow-up view flagging stalled opportunities, overdue actions and deals waiting for a decision.",
+   "Understand costs and forecasts":"A sales forecast comparing weighted pipeline, expected revenue and target attainment."
+  },
+  Operations:{
+   "Track performance and follow-ups":"An operations dashboard tracking workload, service levels, open actions and delivery progress.",
+   "Reduce manual reporting":"A recurring operations report consolidating activity, completion rates and exceptions from your existing trackers.",
+   "Spot delays and bottlenecks":"A workflow dashboard highlighting queues, ageing work and the operational steps causing delays.",
+   "Understand costs and forecasts":"An operations forecast comparing planned capacity, demand, delivery costs and expected workload."
+  },
+  Recruitment:{
+   "Track performance and follow-ups":"A recruitment pipeline tracking vacancies, candidates, interviews, placements and consultant follow-ups.",
+   "Reduce manual reporting":"A recruitment performance pack summarising new roles, candidate activity, placements and fees.",
+   "Spot delays and bottlenecks":"A time-to-fill dashboard identifying vacancies and candidates stalled between recruitment stages.",
+   "Understand costs and forecasts":"A recruitment forecast comparing expected placement fees, live vacancies and consultant targets."
+  },
+  Finance:{
+   "Track performance and follow-ups":"A finance dashboard tracking income, expenditure, outstanding invoices and actions against budget.",
+   "Reduce manual reporting":"A monthly finance pack combining actuals, forecast and budget variance into a repeatable report.",
+   "Spot delays and bottlenecks":"A finance exceptions view flagging overdue invoices, delayed approvals and unusual variances.",
+   "Understand costs and forecasts":"A forecast dashboard comparing actuals, expected costs, cash flow and budget variance."
+  }
+ };
+ document.getElementById("suggestion").textContent=suggestions[area][goal];
+}
 </script><script src="js/mobile-nav.js" defer></script></body></html>
